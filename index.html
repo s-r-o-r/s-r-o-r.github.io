@@ -4,7 +4,245 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROR Control Tower — Arquitectura | Servisofts</title>
+    <meta name="description" content="Control Tower logístico para ROR Logístico: rastreo en tiempo real, ETA, dietas automáticas y CRM con IA. Desarrollado por Servisofts.">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>Hola mundo 1</h1>
+
+    <!-- ══════════════════ FONDO GLOBAL ══════════════════ -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+    <!-- ══════════════════ NAV ══════════════════ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-dot"></span>
+                <span class="brand-name">ROR <b>CONTROL TOWER</b></span>
+            </a>
+            <div class="nav-links">
+                <a href="#reto">El reto</a>
+                <a href="#flujo">Cómo funciona</a>
+                <a href="#diagrama">Arquitectura</a>
+                <a href="#microservicios">Microservicios</a>
+                <a href="#evolucion">Evolución</a>
+            </div>
+            <span class="nav-badge">by servisofts.com</span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <header class="hero" id="top">
+        <div class="hero-radar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <i class="sweep"></i>
+        </div>
+
+        <p class="hero-kicker">SERVISOFTS × ROR LOGÍSTICO · ESPAÑA</p>
+        <h1 class="hero-title">
+            Una torre de control<br>
+            para <span class="grad">toda la flota</span>,<br>
+            sin tocar el core.
+        </h1>
+        <p class="hero-sub">
+            Visibilidad total de las expediciones de <b>ROR Logístico</b> en tiempo real:
+            rastreo GPS, rutas, paradas, ETA, dietas y comunicación con choferes —
+            construido como un ecosistema de microservicios que <b>nunca interfiere</b>
+            con Sigestran, su sistema de negocio.
+        </p>
+
+        <div class="hero-cta">
+            <a class="btn btn-primary" href="#diagrama">Ver la arquitectura</a>
+            <a class="btn btn-ghost" href="#flujo">¿Cómo funciona?</a>
+        </div>
+
+        <!-- ruta animada -->
+        <div class="hero-route" aria-hidden="true">
+            <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
+                <path id="routePath" class="route-line"
+                      d="M -20 120 C 150 40, 280 140, 420 90 S 700 20, 860 90 S 1100 130, 1240 60" />
+                <path class="route-line route-line-glow"
+                      d="M -20 120 C 150 40, 280 140, 420 90 S 700 20, 860 90 S 1100 130, 1240 60" />
+                <circle class="route-stop" cx="420" cy="90" r="5"></circle>
+                <circle class="route-stop-ring" cx="420" cy="90" r="5"></circle>
+                <circle class="route-stop" cx="860" cy="90" r="5"></circle>
+                <circle class="route-stop-ring" cx="860" cy="90" r="5"></circle>
+                <g class="truck">
+                    <circle r="7" class="truck-dot"></circle>
+                    <circle r="14" class="truck-halo"></circle>
+                    <animateMotion dur="14s" repeatCount="indefinite" rotate="none">
+                        <mpath href="#routePath"/>
+                    </animateMotion>
+                </g>
+            </svg>
+        </div>
+
+        <!-- stats -->
+        <div class="hero-stats">
+            <div class="stat"><b data-count="13">0</b><span>microservicios</span></div>
+            <div class="stat"><b data-count="8">0</b><span>hilos 24/7</span></div>
+            <div class="stat"><b data-count="5">0</b><span>APIs FastAPI</span></div>
+            <div class="stat"><b data-count="3">0</b><span>integraciones externas</span></div>
+            <div class="stat"><b data-count="1">0</b><span>app de choferes</span></div>
+        </div>
+    </header>
+
+    <main>
+
+    <!-- ══════════════════ EL RETO ══════════════════ -->
+    <section class="section" id="reto">
+        <p class="section-kicker">01 · EL RETO</p>
+        <h2 class="section-title">Innovar sin poner en riesgo la operación</h2>
+        <p class="section-lead">
+            ROR Logístico opera con <b>Sigestran</b>, su core de negocio en C# sobre MySQL:
+            choferes, tractoras, remolques, matrículas, dietas… todo vive ahí.
+            Tocarlo era impensable. La solución: <b>desacoplar</b>.
+        </p>
+
+        <div class="cards-3">
+            <article class="card reveal">
+                <div class="card-icon amber">◈</div>
+                <h3>No interferir</h3>
+                <p>Sigestran y su MySQL siguen intactos. Solo <b>leemos</b> sus datos a través
+                de un microservicio dedicado, sin escrituras ni carga que afecte la operación diaria.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon violet">◍</div>
+                <h3>Base de datos propia</h3>
+                <p>Una base <b>PostgreSQL</b> nueva concentra usuarios, roles, permisos,
+                expediciones, ubicaciones, rutas, paradas, dietas y checklists del nuevo ecosistema.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon cyan">◆</div>
+                <h3>Microservicios</h3>
+                <p><b>Hilos</b> (workers en loop que vigilan y procesan 24/7) y <b>servers</b>
+                (APIs FastAPI que sirven al frontend). Cada pieza hace una sola cosa, y la hace bien.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ CÓMO FUNCIONA ══════════════════ -->
+    <section class="section" id="flujo">
+        <p class="section-kicker">02 · CÓMO FUNCIONA</p>
+        <h2 class="section-title">Del GPS del camión a la pantalla del cliente</h2>
+        <p class="section-lead">Cuatro capas que convierten señales dispersas en decisiones en tiempo real.</p>
+
+        <div class="flow-steps">
+            <div class="flow-step reveal">
+                <span class="flow-num amber">1</span>
+                <h3>Fuentes</h3>
+                <p>Sigestran (MySQL), Gesinflot (GPS), HERE (rutas), la app de choferes
+                y los canales de contacto: llamadas, WhatsApp y email.</p>
+            </div>
+            <span class="flow-arrow" aria-hidden="true">⟶</span>
+            <div class="flow-step reveal">
+                <span class="flow-num cyan">2</span>
+                <h3>Hilos</h3>
+                <p>8 workers en loop rastrean tractoras y choferes, calculan ETA y dietas,
+                detectan paradas, cruzan matrículas y contactan choferes con IA.</p>
+            </div>
+            <span class="flow-arrow" aria-hidden="true">⟶</span>
+            <div class="flow-step reveal">
+                <span class="flow-num violet">3</span>
+                <h3>Datos</h3>
+                <p>Todo aterriza en PostgreSQL: última ubicación, histórico, rutas,
+                tiempos de carga/descarga, dietas por día, checklists validables.</p>
+            </div>
+            <span class="flow-arrow" aria-hidden="true">⟶</span>
+            <div class="flow-step reveal">
+                <span class="flow-num green">4</span>
+                <h3>Control Tower</h3>
+                <p>5 APIs FastAPI sirven al frontend React: dashboard, pizarra de expediciones,
+                mapa con replay de ruta y perfiles — con roles para admin, operadores y clientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ DIAGRAMA ══════════════════ -->
+    <section class="section section-wide" id="diagrama">
+        <p class="section-kicker">03 · ARQUITECTURA</p>
+        <h2 class="section-title">El ecosistema completo, en vivo</h2>
+        <p class="section-lead">
+            Pasa el cursor o toca cualquier nodo para ver qué hace y con quién se comunica.
+            Las líneas animadas muestran la dirección real del flujo de datos.
+        </p>
+
+        <div class="diagram-legend" id="diagramLegend">
+            <span data-type="source"><i class="dot amber"></i> Fuentes externas</span>
+            <span data-type="hilo"><i class="dot cyan"></i> Hilos · workers 24/7</span>
+            <span data-type="db"><i class="dot violet"></i> Base de datos</span>
+            <span data-type="server"><i class="dot green"></i> Servers · FastAPI</span>
+            <span data-type="front"><i class="dot pink"></i> Frontend & usuarios</span>
+        </div>
+
+        <div class="diagram-scroll">
+            <div class="diagram-wrap" id="diagramWrap">
+                <svg id="diagramSvg" viewBox="0 0 1440 940" role="img"
+                     aria-label="Diagrama de arquitectura de microservicios del Control Tower"></svg>
+            </div>
+        </div>
+
+        <div class="diagram-detail" id="diagramDetail">
+            <div class="detail-head">
+                <span class="detail-type" id="detailType">ARQUITECTURA</span>
+                <h3 id="detailTitle">Selecciona un nodo del diagrama</h3>
+            </div>
+            <p id="detailDesc">
+                Cada caja es un servicio real corriendo en producción. Los <b>hilos</b> son procesos
+                en loop que vigilan y escriben datos; los <b>servers</b> son APIs que el frontend consume.
+                Toca cualquiera para conocer su historia.
+            </p>
+            <div class="detail-links" id="detailLinks"></div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ MICROSERVICIOS ══════════════════ -->
+    <section class="section" id="microservicios">
+        <p class="section-kicker">04 · LAS PIEZAS</p>
+        <h2 class="section-title">13 microservicios, una sola misión</h2>
+
+        <h3 class="group-title cyan-t">⟳ Hilos — workers en loop, 24/7</h3>
+        <div class="ms-grid" id="hilosGrid"></div>
+
+        <h3 class="group-title green-t">⇄ Servers — APIs FastAPI para el frontend</h3>
+        <div class="ms-grid" id="serversGrid"></div>
+
+        <h3 class="group-title pink-t">✦ Y además…</h3>
+        <div class="ms-grid" id="extrasGrid"></div>
+    </section>
+
+    <!-- ══════════════════ EVOLUCIÓN ══════════════════ -->
+    <section class="section" id="evolucion">
+        <p class="section-kicker">05 · LA EVOLUCIÓN</p>
+        <h2 class="section-title">Cada fase resolvió un problema real</h2>
+        <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- ══════════════════ CIERRE ══════════════════ -->
+    <section class="section closing">
+        <div class="closing-box reveal">
+            <h2>El resultado</h2>
+            <p>
+                ROR Logístico pasó de datos dispersos en sistemas aislados a una
+                <b>torre de control unificada</b>: cada tractora visible en el mapa,
+                cada parada cronometrada, cada ETA calculado, cada dieta registrada
+                automáticamente y cada chofer — propio o subcontratado — siempre contactable.
+            </p>
+            <p class="closing-sign">Sin tocar una sola línea de Sigestran.</p>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="brand"><span class="brand-dot"></span> <b>SERVISOFTS</b></span>
+            <span>Arquitectura y desarrollo para <a href="https://rorlogistico.com" target="_blank" rel="noopener">rorlogistico.com</a></span>
+            <a href="https://servisofts.com" target="_blank" rel="noopener">servisofts.com</a>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
 </body>
+</html>
