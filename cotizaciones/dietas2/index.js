@@ -81,6 +81,28 @@
     });
 })();
 
+/* ── 3b. Minutos importantes del video ───────────────────────── */
+
+(function videoMoments() {
+    const video = document.getElementById("dietaVideo");
+    const buttons = document.querySelectorAll(".video-moment");
+    if (!video) return;
+
+    video.addEventListener("loadedmetadata", () => {
+        video.currentTime = 11 * 60 + 45;
+    }, { once: true });
+
+    if (!buttons.length) return;
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const [min, sec] = btn.dataset.time.split(":").map(Number);
+            video.currentTime = min * 60 + sec;
+            video.play();
+            video.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+    });
+})();
+
 /* ── 4. Simulador de códigos de dieta ────────────────────────── */
 
 (function simulator() {
