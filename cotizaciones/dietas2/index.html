@@ -29,6 +29,7 @@
                 <a href="#plazas">Plazas</a>
                 <a href="#especiales">Casos especiales</a>
                 <a href="#pendientes">Pendientes</a>
+                <a href="#cotizacion">Cotización</a>
             </div>
             <span class="nav-badge">motor de cálculo · v2</span>
         </div>
@@ -235,6 +236,25 @@
             <div class="sim-panel">
 
                 <div class="sim-field">
+                    <label class="sim-label">Situación del conductor</label>
+                    <div class="pill-group" data-group="situacion">
+                        <span class="pill active" data-value="sale_plaza">Empieza en su plaza y sale</span>
+                        <span class="pill" data-value="inicia_fuera">Ya está fuera de su plaza al iniciar</span>
+                        <span class="pill" data-value="en_plaza">Permanece en su plaza todo el día</span>
+                        <span class="pill" data-value="ausente">Pausa, baja o vacaciones</span>
+                    </div>
+                </div>
+
+                <div class="sim-field sim-hidden" id="fieldAusencia">
+                    <label class="sim-label">Tipo de ausencia (tblendalia_absenteeism_requests)</label>
+                    <div class="pill-group" data-group="ausencia">
+                        <span class="pill active" data-value="pausa">Pausa</span>
+                        <span class="pill" data-value="baja">Baja</span>
+                        <span class="pill" data-value="vacaciones">Vacaciones</span>
+                    </div>
+                </div>
+
+                <div class="sim-field" id="fieldAmbito">
                     <label class="sim-label">Ámbito del trabajo</label>
                     <div class="pill-group" data-group="ambito">
                         <span class="pill active" data-value="nacional">Nacional</span>
@@ -242,20 +262,11 @@
                     </div>
                 </div>
 
-                <div class="sim-field">
+                <div class="sim-field" id="fieldDia">
                     <label class="sim-label">Tipo de día</label>
                     <div class="pill-group" data-group="dia">
                         <span class="pill active" data-value="laborable">Laborable</span>
                         <span class="pill" data-value="festivo">Festivo / domingo</span>
-                    </div>
-                </div>
-
-                <div class="sim-field">
-                    <label class="sim-label">Situación del conductor</label>
-                    <div class="pill-group" data-group="situacion">
-                        <span class="pill active" data-value="sale_plaza">Empieza en su plaza y sale</span>
-                        <span class="pill" data-value="inicia_fuera">Ya está fuera de su plaza al iniciar</span>
-                        <span class="pill" data-value="en_plaza">Permanece en su plaza todo el día</span>
                     </div>
                 </div>
 
@@ -410,6 +421,57 @@
         </div>
     </section>
 
+    <!-- ══════════════════ COTIZACIÓN ══════════════════ -->
+    <section class="section" id="cotizacion">
+        <p class="section-kicker">07 · PROPUESTA ECONÓMICA</p>
+        <h2 class="section-title">Inversión y plazos de la Etapa 2</h2>
+        <p class="section-lead">
+            Precio cerrado para el desarrollo completo del motor de cálculo de dietas
+            descrito arriba, en dos pagos y con un plazo estimado de entrega.
+        </p>
+
+        <div class="quote-grid">
+            <div class="quote-card reveal">
+                <p class="quote-card-kicker">Precio total</p>
+                <div class="quote-price">3.000 €</div>
+                <div class="quote-split">
+                    <div class="quote-split-item">
+                        <span class="quote-split-amount">1.500 €</span>
+                        <span class="quote-split-label">Al iniciar el proyecto</span>
+                    </div>
+                    <span class="quote-split-plus">+</span>
+                    <div class="quote-split-item">
+                        <span class="quote-split-amount">1.500 €</span>
+                        <span class="quote-split-label">Al finalizar el proyecto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card reveal">
+                <p class="quote-card-kicker">Plazo estimado</p>
+                <div class="quote-phase">
+                    <span class="quote-phase-badge cyan">4 sem.</span>
+                    <div>
+                        <h4>Desarrollo</h4>
+                        <p>Implementación de las reglas y excepciones del motor de dietas.</p>
+                    </div>
+                </div>
+                <div class="quote-phase">
+                    <span class="quote-phase-badge green">2 sem.</span>
+                    <div>
+                        <h4>QA</h4>
+                        <p>Pruebas, validación de casos especiales y ajustes con negocio.</p>
+                    </div>
+                </div>
+                <div class="quote-total">Total: <b>6 semanas</b></div>
+            </div>
+        </div>
+
+        <div class="quote-actions">
+            <button type="button" class="btn btn-ghost" id="btnExportPdf">⭳ Exportar cotización a PDF</button>
+        </div>
+    </section>
+
     <!-- ══════════════════ CIERRE ══════════════════ -->
     <section class="section closing">
         <div class="closing-box reveal">
@@ -434,6 +496,7 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

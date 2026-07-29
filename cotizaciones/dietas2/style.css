@@ -485,6 +485,62 @@ ul { list-style: none; }
     padding: 2px 9px; border-radius: 999px; margin-top: 10px;
 }
 
+/* ── Cotización ───────────────────────────────────────────── */
+
+.quote-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+}
+.quote-card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 30px;
+    backdrop-filter: blur(8px);
+}
+.quote-card-kicker {
+    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.18em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 14px;
+}
+
+.quote-price {
+    font-family: var(--mono); font-weight: 800; font-size: 3rem;
+    color: var(--cyan); text-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+    line-height: 1; margin-bottom: 24px;
+}
+.quote-split { display: flex; align-items: center; gap: 14px; }
+.quote-split-item {
+    flex: 1; text-align: center;
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 12px;
+}
+.quote-split-amount {
+    display: block; font-family: var(--mono); font-weight: 700; font-size: 1.3rem;
+    color: var(--text); margin-bottom: 4px;
+}
+.quote-split-label { font-size: 0.78rem; color: var(--muted); }
+.quote-split-plus { color: var(--muted); font-size: 1.1rem; flex-shrink: 0; }
+
+.quote-phase {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.quote-phase:last-of-type { border-bottom: none; }
+.quote-phase h4 { font-size: 0.98rem; margin-bottom: 4px; }
+.quote-phase p { color: var(--muted); font-size: 0.86rem; }
+.quote-phase-badge {
+    flex-shrink: 0; font-family: var(--mono); font-weight: 700; font-size: 0.82rem;
+    min-width: 58px; text-align: center;
+    border-radius: 10px; padding: 8px 6px;
+}
+.quote-phase-badge.cyan  { background: rgba(34, 211, 238, 0.12);  color: var(--cyan);  box-shadow: inset 0 0 0 1px rgba(34,211,238,.3); }
+.quote-phase-badge.green { background: rgba(52, 211, 153, 0.12); color: var(--green); box-shadow: inset 0 0 0 1px rgba(52,211,153,.3); }
+.quote-total {
+    margin-top: 14px; font-family: var(--mono); font-size: 0.86rem;
+    color: var(--muted); text-align: right;
+}
+.quote-total b { color: var(--text); }
+
+.quote-actions { margin-top: 22px; }
+
 /* ── Cierre ───────────────────────────────────────────────── */
 
 .closing { padding-bottom: 90px; }
