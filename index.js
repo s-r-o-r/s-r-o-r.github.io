@@ -567,6 +567,24 @@ function initCounters() {
     document.querySelectorAll("[data-count]").forEach(n => io.observe(n));
 }
 
+function initMobileNav() {
+    const toggle = document.getElementById("navToggle");
+    const links = document.getElementById("navLinks");
+    if (!toggle || !links) return;
+
+    const close = () => {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+    };
+
+    toggle.addEventListener("click", () => {
+        const open = links.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+    });
+
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+}
+
 /* ──────────────────────────────────────────────────────────
    7. ARRANQUE
    ────────────────────────────────────────────────────────── */
@@ -584,6 +602,7 @@ renderMsCards("extrasGrid", EXTRAS_CARDS, "var(--pink)", "");
 renderTimeline();
 initReveal();
 initCounters();
+initMobileNav();
 
 /* clic fuera de un nodo → deseleccionar */
 svg.addEventListener("click", ev => {

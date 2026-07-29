@@ -593,10 +593,12 @@ ul { list-style: none; }
 /* ── Responsive ───────────────────────────────────────────── */
 
 @media (max-width: 860px) {
+    .nav-inner { position: relative; flex-wrap: nowrap; }
+    .nav-badge { display: none; }
     .nav-toggle { display: flex; }
     .nav-links {
         display: none; position: absolute; top: 100%; left: 0; right: 0;
-        flex-direction: column; gap: 0;
+        flex-direction: column; gap: 0; margin-left: 0;
         background: rgba(5, 7, 13, 0.97); backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--line);
         padding: 8px 24px 16px;
@@ -604,7 +606,6 @@ ul { list-style: none; }
     .nav-links.open { display: flex; }
     .nav-links a { padding: 10px 0; border-top: 1px solid var(--line); }
     .nav-links a:first-child { border-top: none; }
-    .nav-inner { position: relative; }
     .hero { padding-top: 64px; }
     .hero-dial { display: none; }
     .closing-box { padding: 38px 22px; }
