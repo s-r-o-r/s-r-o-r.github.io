@@ -60,8 +60,10 @@ Nos fijamos en la bd si el conductor esta haciendo plaza, si esta fiera de su pl
 ### RHH (esto va aparte no es el mismo calculo de la dieta solo para los que trabajan en plaza)
 Re4cursos humanos controla las personas que trabajan el los dias, y el dia solo cuenta para las personas que comienzan a trabajar antes de las 12 del medio dia si comienzan despues ya no cuenta como dia trabajado, solo se tiquea en otra tabla si trabajo o no para sacar a fin de mes cuantos dias trabajaron. (esto ira en una tabla aparte)
 
-### Pendiente
-Que pasa si salgo internacional a las 5 am pero a las 10 am entro a espana es 4N o 2N? no puedo poner dos dietas pero tengo que pagar el desayuno internacional y el resto nacional. 
+### Pendiente (RESUELTO)
+Que pasa si salgo internacional a las 5 am pero a las 10 am entro a espana es 4N o 2N? no puedo poner dos dietas pero tengo que pagar el desayuno internacional y el resto nacional.
+
+Resuelto: si el chofer esta mas del 60% del tiempo en internacional se aplica dieta internacional, sino nacional. Sigue siendo una sola dieta (no se dividen), y con ese ambito ya resuelto se aplican las reglas normales de N/F de arriba.
 
 
 ### Tarjeta en descanzo

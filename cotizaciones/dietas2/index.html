@@ -74,7 +74,7 @@
             <div class="stat"><b data-count="4">0</b><span>horas parametrizables</span></div>
             <div class="stat"><b data-count="3">0</b><span>plazas / sucursales</span></div>
             <div class="stat"><b data-count="2">0</b><span>ámbitos (nac. / int.)</span></div>
-            <div class="stat"><b data-count="1">0</b><span>pregunta abierta</span></div>
+            <div class="stat"><b data-count="0">0</b><span>preguntas abiertas</span></div>
         </div>
     </header>
 
@@ -231,8 +231,8 @@
         <h2 class="section-title">Prueba las reglas con un caso real</h2>
         <p class="section-lead">
             Ajusta la situación del conductor y el simulador calcula el código de dieta en vivo,
-            aplicando exactamente las reglas y excepciones descritas arriba — incluida la
-            pregunta todavía sin resolver sobre cruces de frontera intradía.
+            aplicando exactamente las reglas y excepciones descritas arriba — incluida la regla
+            ya confirmada de cruce de frontera intradía (más del 60% del tiempo decide el ámbito).
         </p>
 
         <div class="sim-box">
@@ -265,6 +265,11 @@
                     </div>
                 </div>
 
+                <div class="sim-field sim-hidden" id="fieldCrucePct">
+                    <label class="sim-label">% del tiempo del día en territorio internacional</label>
+                    <input class="sim-input" type="number" id="inputCrucePct" value="65" min="0" max="100" step="1">
+                </div>
+
                 <div class="sim-field" id="fieldDia">
                     <label class="sim-label">Tipo de día</label>
                     <div class="pill-group" data-group="dia">
@@ -291,7 +296,7 @@
                     </label>
                     <label class="sim-check">
                         <input type="checkbox" id="chkCruce">
-                        Cruza de territorio nacional ⇄ internacional durante el mismo día
+                        Cruza de territorio nacional ⇄ internacional durante el mismo día (aplica el % de tiempo)
                     </label>
                 </div>
             </div>
@@ -401,25 +406,27 @@
 
     <!-- ══════════════════ PENDIENTES ══════════════════ -->
     <section class="section" id="pendientes">
-        <p class="section-kicker">06 · PENDIENTE DE DEFINICIÓN</p>
-        <h2 class="section-title">Lo que todavía no tiene una regla cerrada</h2>
+        <p class="section-kicker">06 · REGLA CERRADA EN REUNIÓN</p>
+        <h2 class="section-title">El único caso abierto ya tiene una regla</h2>
         <p class="section-lead">
-            Antes de dar por cerrada la Etapa 2 conviene resolver este caso con negocio: hoy
-            el simulador lo señala pero no lo resuelve por sí solo.
+            En la reunión de negocio se cerró el punto que quedaba en amarillo: qué pasa
+            cuando el conductor cruza de territorio nacional a internacional (o al revés)
+            en la misma jornada. El simulador ya aplica esta regla.
         </p>
 
         <div class="timeline">
-            <div class="tl-item reveal">
-                <h3><span class="tl-phase">CASO ABIERTO</span>Cruce de frontera intradía</h3>
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Cruce de frontera intradía</h3>
                 <p>
-                    ¿Qué pasa si el chofer sale como <b>internacional a las 05:00</b> pero a
-                    las <b>10:00 ya entró a España</b>? No se puede asignar dos dietas el mismo
-                    día, pero el desayuno debería pagarse como internacional y el resto del
-                    día como nacional. Falta decidir si el sistema debe <b>partir la dieta</b>,
-                    quedarse con el código de <b>mayor cobertura</b>, o priorizar un ámbito
-                    sobre otro por regla fija.
+                    Si el chofer sale como <b>internacional a las 05:00</b> pero a las
+                    <b>10:00 ya entró a España</b>, <b>no se asignan dos dietas</b> — sigue
+                    siendo un único código, como exige el resto del motor. Se calcula qué
+                    ámbito ocupó <b>más del 60% del tiempo trabajado</b> ese día: si más del
+                    60% fue en territorio internacional, se aplica la serie internacional
+                    (4N/5N/6N o 4F/5F/6F) en su totalidad; si no, se aplica la serie nacional
+                    (1N/2N/3N o 1F/2F/3F).
                 </p>
-                <span class="tl-stamp">Registrado en README · pendiente de decisión de negocio</span>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado con negocio · ya reflejado en el simulador</span>
             </div>
         </div>
     </section>
@@ -482,11 +489,12 @@
             <p>
                 Con la Etapa 2, cada jornada de cada conductor —nacional o internacional,
                 laborable o festivo, dentro o fuera de su plaza— resuelve automáticamente
-                <b>un único código de dieta</b> o, si corresponde, sus <b>horas extra</b>,
-                a partir de datos que ya existen en BD: plaza, hora de inicio, tipo de día
-                y estado de la tarjeta.
+                <b>un único código de dieta</b> (incluido el cruce de frontera intradía,
+                según el ámbito con más del 60% del tiempo) o, si corresponde, sus
+                <b>horas extra</b>, a partir de datos que ya existen en BD: plaza, hora de
+                inicio, tipo de día y estado de la tarjeta.
             </p>
-            <p class="closing-sign">Falta cerrar un solo caso: el cruce de frontera intradía.</p>
+            <p class="closing-sign">Con esta regla cerrada, la Etapa 2 queda completa.</p>
         </div>
     </section>
 

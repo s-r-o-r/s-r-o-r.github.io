@@ -475,7 +475,7 @@ ul { list-style: none; }
 .timeline::before {
     content: ""; position: absolute; left: 10px; top: 6px; bottom: 6px;
     width: 2px;
-    background: linear-gradient(180deg, var(--amber), var(--violet), var(--pink));
+    background: linear-gradient(180deg, var(--green), var(--violet), var(--pink));
     opacity: 0.5;
 }
 .tl-item { position: relative; padding: 0 0 34px; }
@@ -485,11 +485,16 @@ ul { list-style: none; }
     background: var(--bg); border: 2px solid var(--amber);
     box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
 }
+.tl-item.tl-resolved::before {
+    border-color: var(--green);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+}
 .tl-item h3 { font-size: 1.05rem; margin-bottom: 6px; }
 .tl-item h3 .tl-phase {
     font-family: var(--mono); font-size: 0.7rem; color: var(--violet);
     letter-spacing: 0.16em; display: block; margin-bottom: 4px;
 }
+.tl-item.tl-resolved h3 .tl-phase { color: var(--green); }
 .tl-item p { color: var(--muted); font-size: 0.92rem; max-width: 680px; }
 .tl-item p b { color: var(--text); }
 .tl-stamp {
@@ -497,6 +502,10 @@ ul { list-style: none; }
     color: var(--amber); background: rgba(251, 191, 36, 0.08);
     border: 1px solid rgba(251, 191, 36, 0.25);
     padding: 2px 9px; border-radius: 999px; margin-top: 10px;
+}
+.tl-stamp-resolved {
+    color: var(--green); background: rgba(52, 211, 153, 0.08);
+    border-color: rgba(52, 211, 153, 0.25);
 }
 
 /* ── Cotización ───────────────────────────────────────────── */

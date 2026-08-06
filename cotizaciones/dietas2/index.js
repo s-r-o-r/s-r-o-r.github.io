@@ -426,14 +426,14 @@
             "otra tabla si hubo actividad, para el resumen mensual de días trabajados."
         );
 
-        // ══════════════════ PENDIENTE ══════════════════
-        heading("Pendiente de definición");
+        // ══════════════════ CRUCE DE FRONTERA ══════════════════
+        heading("Cruce de frontera intradía (regla confirmada)");
         paragraph(
-            "Caso abierto — cruce de frontera intradía: ¿qué pasa si el chofer sale como " +
-            "internacional a las 05:00 pero a las 10:00 ya entró a España? No se puede asignar " +
-            "dos dietas el mismo día, pero el desayuno debería pagarse como internacional y el " +
-            "resto del día como nacional. Falta decidir con negocio si el sistema debe partir " +
-            "la dieta, quedarse con el código de mayor cobertura, o priorizar un ámbito fijo."
+            "Si el chofer sale como internacional a las 05:00 pero a las 10:00 ya entró a " +
+            "España, no se asignan dos dietas: sigue siendo un único código. El ámbito de la " +
+            "dieta lo decide dónde pasó más del 60% del tiempo trabajado ese día — si más del " +
+            "60% fue en territorio internacional, se aplica la serie internacional en su " +
+            "totalidad; si no, se aplica la serie nacional."
         );
 
         // ══════════════════ PRECIO ══════════════════
@@ -474,6 +474,7 @@
     if (!root) return;
 
     const fieldAmbito = document.getElementById("fieldAmbito");
+    const fieldCrucePct = document.getElementById("fieldCrucePct");
     const fieldDia = document.getElementById("fieldDia");
     const fieldAusencia = document.getElementById("fieldAusencia");
     const fieldHora = document.getElementById("fieldHora");
@@ -481,6 +482,7 @@
     const fieldExtras = document.getElementById("fieldExtras");
     const inputHora = document.getElementById("inputHora");
     const inputHoras = document.getElementById("inputHoras");
+    const inputCrucePct = document.getElementById("inputCrucePct");
     const chkDescanso = document.getElementById("chkDescanso");
     const chkCruce = document.getElementById("chkCruce");
 
@@ -542,19 +544,32 @@
 
     function updateFieldVisibility(situacion) {
         const ausente = situacion === "ausente";
+        const cruce = chkCruce.checked;
         fieldAusencia.classList.toggle("sim-hidden", !ausente);
-        fieldAmbito.classList.toggle("sim-hidden", ausente);
+        fieldAmbito.classList.toggle("sim-hidden", ausente || cruce);
+        fieldCrucePct.classList.toggle("sim-hidden", ausente || !cruce);
         fieldDia.classList.toggle("sim-hidden", ausente);
         fieldExtras.classList.toggle("sim-hidden", ausente);
         fieldHora.classList.toggle("sim-hidden", ausente || situacion !== "sale_plaza");
         fieldHoras.classList.toggle("sim-hidden", ausente || situacion !== "en_plaza");
     }
 
+    // Regla confirmada con negocio: si el conductor cruza de territorio en el
+    // mismo día, el ámbito de la dieta lo decide dónde pasó más del 60% del
+    // tiempo trabajado — no se dividen dietas.
+    function resolveAmbito(cruce, pct) {
+        if (!cruce) return getActive("ambito");
+        return pct > 60 ? "internacional" : "nacional";
+    }
+
     function compute() {
-        const ambito = getActive("ambito");
         const dia = getActive("dia");
         const situacion = getActive("situacion");
         updateFieldVisibility(situacion);
+
+        const cruce = chkCruce.checked;
+        const pct = parseFloat(inputCrucePct.value) || 0;
+        const ambito = resolveAmbito(cruce, pct);
 
         if (situacion === "ausente") {
             const AUSENCIA = {
@@ -574,28 +589,28 @@
         }
 
         const descanso = chkDescanso.checked;
-        const cruce = chkCruce.checked;
-        let alertHtml = "";
+        let alertHtml = cruce ? crossAlert(pct, ambito) : "";
 
         if (situacion === "en_plaza") {
             const horas = parseFloat(inputHoras.value) || 0;
             if (descanso) {
-                render("—", "En plaza y tarjeta en descanso: <b>no se asigna nada</b>.", ["EN PLAZA", "TARJETA EN DESCANSO"], "none", cruce ? crossAlert() : "");
+                render("—", "En plaza y tarjeta en descanso: <b>no se asigna nada</b>.", ["EN PLAZA", "TARJETA EN DESCANSO"], "none", alertHtml);
             } else if (horas <= 10) {
-                render("—", "Sin dieta. <b>0 horas extra</b> — jornada de hasta 10h dentro de plaza.", ["EN PLAZA"], "none", cruce ? crossAlert() : "");
+                render("—", "Sin dieta. <b>0 horas extra</b> — jornada de hasta 10h dentro de plaza.", ["EN PLAZA"], "none", alertHtml);
             } else {
                 const extra = Math.floor((horas - 10) * 2) / 2;
-                render(extra + "h", `Sin dieta de viaje. Horas extra registradas: <b>${extra}h</b> (redondeo siempre hacia abajo, pasos de 0.5).`, ["EN PLAZA", "HORAS EXTRA"], "normal", cruce ? crossAlert() : "");
+                render(extra + "h", `Sin dieta de viaje. Horas extra registradas: <b>${extra}h</b> (redondeo siempre hacia abajo, pasos de 0.5).`, ["EN PLAZA", "HORAS EXTRA"], "normal", alertHtml);
             }
             return;
         }
 
         // fuera de plaza: "sale_plaza" o "inicia_fuera"
         const badges = ["FUERA DE PLAZA", dia === "festivo" ? "FESTIVO / DOMINGO" : "LABORABLE"];
+        if (cruce) badges.push(`ÁMBITO POR 60% · ${ambito.toUpperCase()}`);
 
         if (descanso) {
             const code = ambito === "internacional" ? "FSI" : "FSN";
-            render(code, `Tarjeta en descanso, <b>sin conducción</b> en el día — territorio ${ambito}.`, [...badges, "TARJETA EN DESCANSO"], "normal", cruce ? crossAlert() : "");
+            render(code, `Tarjeta en descanso, <b>sin conducción</b> en el día — territorio ${ambito}.`, [...badges, "TARJETA EN DESCANSO"], "normal", alertHtml);
             return;
         }
 
@@ -611,19 +626,18 @@
 
         if (forced) {
             badges.push("REGLA FORZADA");
-            alertHtml += `<b>Regla aplicada:</b> el chofer ya estaba fuera de su plaza al iniciar el día, así que el código es siempre el de cobertura completa (banda 3), sin importar la hora.`;
+            alertHtml += (alertHtml ? "<br><br>" : "") + `<b>Regla aplicada:</b> el chofer ya estaba fuera de su plaza al iniciar el día, así que el código es siempre el de cobertura completa (banda 3), sin importar la hora.`;
             if (ambito === "internacional") {
                 alertHtml += ` El README solo documenta esta excepción de forma explícita para 3N/3F; extenderla a ${code} es <b>una convención por analogía</b> — conviene confirmarla con negocio.`;
             }
         }
 
-        if (cruce) alertHtml += (alertHtml ? "<br><br>" : "") + crossAlert();
-
-        render(code, MEANING[band], badges, (forced && ambito === "internacional") || cruce ? "warn" : "normal", alertHtml);
+        render(code, MEANING[band], badges, forced && ambito === "internacional" ? "warn" : "normal", alertHtml);
     }
 
-    function crossAlert() {
-        return `<b>Caso pendiente:</b> este día cruza de territorio nacional/internacional. Hoy el sistema no divide la dieta entre ámbitos — falta decidir si se parte por tramos, se prioriza el ámbito de mayor cobertura, o se fija una regla única. Ver sección "Pendiente de definición".`;
+    function crossAlert(pct, ambito) {
+        const supera = pct > 60;
+        return `<b>Regla aplicada — cruce de frontera intradía:</b> el conductor pasó <b>${pct}%</b> del tiempo en territorio internacional ese día. Como ${supera ? "supera" : "no supera"} el 60%, se aplica la dieta <b>${ambito}</b> en su totalidad — no se dividen dietas.`;
     }
 
     root.querySelectorAll(".pill-group").forEach((group) => {
@@ -637,6 +651,7 @@
     });
     inputHora.addEventListener("input", compute);
     inputHoras.addEventListener("input", compute);
+    inputCrucePct.addEventListener("input", compute);
     chkDescanso.addEventListener("change", compute);
     chkCruce.addEventListener("change", compute);
 
