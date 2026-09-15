@@ -562,6 +562,20 @@ ul { list-style: none; }
 }
 .quote-total b { color: var(--text); }
 
+.quote-start {
+    margin-top: 6px; font-family: var(--mono); font-size: 0.86rem;
+    color: var(--muted); text-align: right;
+}
+.quote-start b { color: var(--text); }
+
+.quote-progress {
+    margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; gap: 10px;
+    font-family: var(--mono); font-size: 0.82rem; color: var(--muted);
+}
+.quote-progress b { color: var(--cyan); }
+.quote-progress .done b { color: var(--green); }
+
 .quote-actions { margin-top: 22px; }
 
 /* ── Cierre ───────────────────────────────────────────────── */

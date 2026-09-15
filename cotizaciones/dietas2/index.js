@@ -6,6 +6,38 @@
 
 "use strict";
 
+/* ── 0. Progreso del proyecto (inicio 2 de septiembre → hoy) ── */
+
+(function buildQuoteProgress() {
+    const el = document.getElementById("quoteProgress");
+    if (!el) return;
+
+    const TOTAL_WEEKS = 6;
+    const today = new Date();
+
+    // El proyecto arrancó un 2 de septiembre; se toma el más reciente que no sea futuro.
+    let start = new Date(today.getFullYear(), 8, 2);
+    if (start > today) start = new Date(today.getFullYear() - 1, 8, 2);
+
+    const msPerWeek = 1000 * 60 * 60 * 24 * 7;
+    const weeksElapsed = Math.max(0, (today - start) / msPerWeek);
+    const weeksRemaining = TOTAL_WEEKS - weeksElapsed;
+
+    const fmt = (n) => n.toFixed(1).replace(/\.0$/, "");
+
+    if (weeksRemaining <= 0) {
+        el.innerHTML = `
+            <span>Semanas transcurridas: <b>${fmt(weeksElapsed)}</b></span>
+            <span class="done">Plazo estimado: <b>cumplido</b></span>
+        `;
+    } else {
+        el.innerHTML = `
+            <span>Semanas transcurridas: <b>${fmt(weeksElapsed)}</b></span>
+            <span>Tiempo restante: <b>${fmt(weeksRemaining)} sem.</b></span>
+        `;
+    }
+})();
+
 /* ── 1. Reloj decorativo del hero (resalta 08:00 / 12:00 / 20:00) ── */
 
 (function buildDial() {
