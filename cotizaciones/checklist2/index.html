@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Checklist · Fase 2 — Cotización de desarrollo</title>
+    <meta name="description" content="Cotización de desarrollo para las mejoras y nuevas funcionalidades del módulo de Checklist de la aplicación — Fase 2.">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ══════════════════ FONDO GLOBAL ══════════════════ -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+    <!-- ══════════════════ NAV ══════════════════ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-dot"></span>
+                <span class="brand-name">CHECKLIST <b>FASE 2</b></span>
+            </a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="../../">Inicio</a>
+                <a href="../">Cotizaciones</a>
+                <a href="#descripcion">Descripción</a>
+                <a href="#alcance">Alcance</a>
+                <a href="#cotizacion">Inversión</a>
+            </div>
+            <span class="nav-badge">cotización · fase 2</span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <header class="hero" id="top">
+        <p class="hero-kicker">APP CHECKLIST · FASE 2 · COTIZACIÓN DE DESARROLLO</p>
+        <h1 class="hero-title">
+            Un checklist más <span class="grad">inteligente</span><br>
+            para cada vehículo,<br>
+            sin preguntas repetidas.
+        </h1>
+        <p class="hero-sub">
+            Desarrollo de las mejoras y nuevas funcionalidades del módulo de <b>Checklist</b> de
+            la aplicación (Fase 2), según el documento de especificaciones <b>“App GPS Fase 2 v2”</b>,
+            incluyendo la gestión de preguntas por vehículo, el envío automático de correos ante
+            hallazgos críticos y la nueva grid visual de revisiones.
+        </p>
+
+        <div class="hero-cta">
+            <a class="btn btn-primary" href="#alcance">Ver alcance del trabajo</a>
+            <a class="btn btn-ghost" href="#cotizacion">Ver inversión y plazo</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat"><b data-count="6">0</b><span>bloques de alcance</span></div>
+            <div class="stat"><b data-count="4">0</b><span>semanas de plazo</span></div>
+            <div class="stat"><b data-count="2">0</b><span>pagos · anticipo + entrega</span></div>
+            <div class="stat"><b data-count="1">0</b><span>ronda de ajustes incluida</span></div>
+        </div>
+    </header>
+
+    <main>
+
+    <!-- ══════════════════ DESCRIPCIÓN ══════════════════ -->
+    <section class="section" id="descripcion">
+        <p class="section-kicker">01 · DESCRIPCIÓN DEL PROYECTO</p>
+        <h2 class="section-title">La Fase 2 cierra los huecos operativos del Checklist</h2>
+        <p class="section-lead">
+            Sobre el módulo de Checklist ya en producción, esta fase añade el contexto de dónde se
+            revisa cada vehículo, ordena quién puede responder y recibir cada pregunta, automatiza
+            el aviso ante hallazgos críticos y entrega una grid visual para auditar y comparar
+            revisiones sin depender de capturas de pantalla.
+        </p>
+
+        <div class="cards-3">
+            <article class="card reveal">
+                <div class="card-icon cyan">◈</div>
+                <h3>Preguntas por vehículo</h3>
+                <p>Cada pregunta define <b>quién</b> puede responderla, a <b>qué vehículos</b>
+                aplica y a <b>qué emails</b> avisar si sale crítica.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon amber">✉</div>
+                <h3>Avisos automáticos</h3>
+                <p>Al finalizar una revisión, los hallazgos críticos se agrupan y se envían por
+                mail a los destinatarios correctos, sin intervención manual.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon violet">▦</div>
+                <h3>Grid visual de revisiones</h3>
+                <p>Filtra por vehículo y fechas, identifica lo crítico por color y compara contra
+                la revisión anterior del mismo vehículo.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ ALCANCE ══════════════════ -->
+    <section class="section" id="alcance">
+        <p class="section-kicker">02 · ALCANCE DEL TRABAJO</p>
+        <h2 class="section-title">Seis bloques, un mismo checklist más robusto</h2>
+        <p class="section-lead">
+            El desarrollo se organiza en seis bloques, desde la entrada de la revisión hasta la
+            grid final de auditoría — incluido el cambio de origen del tipo de vehículo, que es
+            la tarea de mayor complejidad del alcance.
+        </p>
+
+        <div class="scope-list">
+            <article class="scope-card reveal" style="--accent: var(--amber)">
+                <div class="scope-card-head">
+                    <div class="card-icon amber">1</div>
+                    <h3>Entrada de checklist para gestores</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Desplegable para elegir la <b>campa/zona</b> desde donde se realiza la revisión.</li>
+                    <li>Ampliación de <b>tbldestinatarios</b> para indicar cuáles son las campas o almacenes propios.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--cyan)">
+                <div class="scope-card-head">
+                    <div class="card-icon cyan">2</div>
+                    <h3>Gestión de preguntas</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Selector de <b>chófer / gestor / otros roles futuros</b> para definir quién puede responder cada pregunta (selección múltiple).</li>
+                    <li>Selector múltiple de <b>emails por pregunta</b> para casos de criticidad, filtrado a usuarios con <b>ID Usuario Sigestran</b>.</li>
+                    <li><b>Reordenamiento de preguntas</b> en el grid (arrastre o botones subir/bajar), actualizando el número de orden.</li>
+                    <li>Alta de preguntas con selección de <b>varios tipos de vehículo</b>, replicando la pregunta en cada uno.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--violet)">
+                <div class="scope-card-head">
+                    <div class="card-icon violet">3</div>
+                    <h3>Envío de correos automáticos</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Envío automático al <b>finalizar una revisión</b>, a los destinatarios configurados por pregunta crítica.</li>
+                    <li><b>Agrupación de preguntas críticas</b> en un único correo por destinatario, con plantilla de asunto y cuerpo (fecha, vehículo, usuario, listado de incidencias y enlace a la revisión).</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--pink)">
+                <div class="scope-card-head">
+                    <div class="card-icon pink">4</div>
+                    <h3>Funcionalidades adicionales</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li><b>Duplicar</b> el set completo de preguntas de un vehículo hacia otro vehículo.</li>
+                    <li><b>Eliminar en bloque</b> (anular) todas o varias preguntas de un vehículo, mediante selección con checks.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--green)">
+                <div class="scope-card-head">
+                    <div class="card-icon green">5</div>
+                    <h3>Grid de revisiones</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Nueva grid con <b>selector previo de vehículo y rango de fechas</b> (carga bajo demanda).</li>
+                    <li>Visualización con <b>codificación de colores</b> para preguntas críticas; las fotos no se muestran en el grid, se acceden con un botón.</li>
+                    <li><b>Exportación a Excel</b> de la información visualizada en el grid.</li>
+                    <li><b>Comparativa entre revisiones</b> del mismo vehículo, para detectar críticos no resueltos de revisiones anteriores.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--red)">
+                <div class="scope-card-head">
+                    <div class="card-icon red">6</div>
+                    <h3>Cambio de origen del tipo de vehículo</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>En la <b>v1</b>, el tipo de vehículo se obtenía en una sola consulta, uniendo <b>tblvehiculos</b> con <b>tbltipos_vehiculos</b> directamente por <b>tipo_vehiculo_id</b>.</li>
+                    <li>En la <b>v2</b>, el tipo de vehículo se resuelve con dos JOIN adicionales: contra <b>tbltipos_vehiculo_v1</b> (usando <b>COALESCE</b> entre el id de vehículo y el de tipo) y contra <b>tblgrupos_vehiculo</b> para obtener el grupo.</li>
+                    <li>Este cambio de origen de datos <b>afecta a todo el desarrollo previo</b> de la app (selección de vehículo, iconografía por tipo, asignación de preguntas por tipo, etc.), por lo que requiere revisar y ajustar cada punto donde se lee el tipo de vehículo.</li>
+                </ul>
+
+                <div class="code-compare">
+                    <div class="code-block old">
+                        <span class="code-block-label old">Antes · v1</span>
+                        <pre>SELECT
+    REPLACE(LOWER(v.sMatricula), '-', '') AS matricula_busqueda,
+    v.*,
+    tv.*
+FROM tblvehiculos v
+LEFT JOIN tbltipos_vehiculos tv
+    ON tv.lTipoVehiculoV1_id = v.tipo_vehiculo_id
+WHERE REPLACE(LOWER(v.sMatricula), '-', '')
+    LIKE CONCAT('%%', REPLACE(LOWER(%s), '-', ''), '%%')</pre>
+                    </div>
+                    <div class="code-block new">
+                        <span class="code-block-label new">Ahora · v2</span>
+                        <pre>SELECT
+    v.*,
+    tv.*,
+    tv1.*,
+    gr.*
+FROM tblvehiculos v
+LEFT JOIN tbltipos_vehiculos tv
+    ON tv.lTipoVehiculo_id = v.tipo_vehiculo_id
+LEFT JOIN tbltipos_vehiculo_v1 tv1
+    ON tv1.lTipoVehiculoV1_id = COALESCE(v.lTipoVehiculoV1_id, tv.lTipoVehiculoV1_id)
+LEFT JOIN tblgrupos_vehiculo gr
+    ON tv1.lGrupoVehiculo_id = gr.lGrupoVehiculo_id
+WHERE v.sMatricula = '5524-MVW';</pre>
+                    </div>
+                </div>
+
+                <p class="scope-note">
+                    <b>Tarea de mayor complejidad del alcance:</b> al cambiar la fuente del tipo de
+                    vehículo, hay que revisar y ajustar todo el desarrollo anterior que dependía de
+                    la consulta original (Fase 1 y Fase 2), no solo agregar los nuevos JOIN.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ COTIZACIÓN ══════════════════ -->
+    <section class="section" id="cotizacion">
+        <p class="section-kicker">03 · PROPUESTA ECONÓMICA</p>
+        <h2 class="section-title">Inversión y plazo de la Fase 2</h2>
+        <p class="section-lead">
+            Precio cerrado para el desarrollo completo del alcance descrito arriba, en dos pagos y
+            con un plazo estimado de entrega.
+        </p>
+
+        <div class="quote-grid">
+            <div class="quote-card reveal">
+                <p class="quote-card-kicker">Precio total</p>
+                <div class="quote-price">USD 2.000</div>
+                <div class="quote-split">
+                    <div class="quote-split-item">
+                        <span class="quote-split-amount">USD 1.000</span>
+                        <span class="quote-split-label">Anticipo — al iniciar el proyecto</span>
+                    </div>
+                    <span class="quote-split-plus">+</span>
+                    <div class="quote-split-item">
+                        <span class="quote-split-amount">USD 1.000</span>
+                        <span class="quote-split-label">Contra entrega</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card reveal">
+                <p class="quote-card-kicker">Plazo estimado</p>
+                <div class="quote-phase">
+                    <span class="quote-phase-badge cyan">4 sem.</span>
+                    <div>
+                        <h4>Desarrollo</h4>
+                        <p>Implementación completa del alcance: gestión de preguntas, correos
+                        automáticos, funcionalidades adicionales, grid de revisiones y el cambio de
+                        origen del tipo de vehículo.</p>
+                    </div>
+                </div>
+                <div class="quote-total">Total: <b>4 semanas</b></div>
+                <div class="quote-start">El plazo se cuenta <b>desde la confirmación del anticipo</b></div>
+            </div>
+        </div>
+
+        <h3 class="group-title violet-t" style="margin-top: 36px;">Condiciones</h3>
+        <div class="ms-grid" style="--accent: var(--violet)">
+            <div class="ms-card">
+                <h4>Forma de pago</h4>
+                <p><b>50%</b> como anticipo para iniciar el desarrollo y <b>50%</b> contra entrega.</p>
+            </div>
+            <div class="ms-card">
+                <h4>Plazo</h4>
+                <p><b>4 semanas</b>, contadas a partir de la confirmación del anticipo.</p>
+            </div>
+            <div class="ms-card">
+                <h4>Incluye</h4>
+                <p>Ambiente de pruebas y <b>una ronda de ajustes menores</b> post-entrega.</p>
+            </div>
+        </div>
+
+        <div class="quote-actions">
+            <button type="button" class="btn btn-ghost" id="btnExportPdf">▤ Ver cotización en PDF</button>
+            <button type="button" class="btn btn-ghost" id="btnViewRequest">📄 Ver solicitud</button>
+        </div>
+    </section>
+
+    <!-- ══════════════════ CIERRE ══════════════════ -->
+    <section class="section closing">
+        <div class="closing-box reveal">
+            <h2>El resultado esperado</h2>
+            <p>
+                Con la Fase 2, cada revisión queda vinculada a la <b>campa/zona</b> correcta, las
+                preguntas críticas llegan de inmediato a quien debe actuar y el histórico de
+                revisiones se puede <b>auditar, comparar y exportar</b> sin depender de capturas
+                de pantalla.
+            </p>
+            <p class="closing-sign">Con este alcance cerrado, la Fase 2 queda lista para desarrollo.</p>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="brand"><span class="brand-dot"></span> <b>CHECKLIST · FASE 2</b></span>
+            <span>Cotización de desarrollo para <a href="https://rorlogistico.com" target="_blank" rel="noopener">rorlogistico.com</a></span>
+            <a href="https://servisofts.com" target="_blank" rel="noopener">servisofts.com</a>
+        </div>
+    </footer>
+
+    <!-- ══════════════════ MODAL PDF ══════════════════ -->
+    <div class="pdf-modal" id="pdfModal" aria-hidden="true">
+        <div class="pdf-modal-backdrop" id="pdfModalBackdrop"></div>
+        <div class="pdf-modal-panel">
+            <div class="pdf-modal-header">
+                <span id="pdfModalTitle">Cotización · App Checklist — Fase 2</span>
+                <div class="pdf-modal-actions">
+                    <button type="button" class="btn btn-ghost btn-sm" id="btnDownloadPdf">⭳ Descargar</button>
+                    <button type="button" class="pdf-modal-close" id="btnClosePdf" aria-label="Cerrar vista previa">✕</button>
+                </div>
+            </div>
+            <iframe id="pdfFrame" class="pdf-modal-frame" title="Vista previa de la cotización en PDF"></iframe>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
