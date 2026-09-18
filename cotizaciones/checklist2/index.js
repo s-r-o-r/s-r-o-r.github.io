@@ -329,8 +329,31 @@
             { size: 8.6, color: MUTED, gap: 8 }
         );
 
+        sectionLabel("7. Preguntas críticas más completas");
+        [
+            "Desplegable para añadir sub-respuestas a una pregunta tipo check (p. ej. en carrocería: Frontal, lateral izquierdo, trasera, lateral derecho, interior), configurables como texto libre separado por comas, igual que las preguntas tipo Select.",
+            "Al marcar NOK en el checklist, selección múltiple de esas sub-respuestas.",
+            "Posibilidad de adjuntar fotografía al marcar una criticidad en una pregunta tipo check.",
+            "Cuadro de observaciones (texto libre) al marcar NOK en preguntas tipo check.",
+        ].forEach(bullet);
+        y += 3;
+
+        sectionLabel("8. Datos de refrigeración del remolque");
+        [
+            "Relación con la tabla tblvehiculos_equipamiento.",
+            "Mostrar sRefrigeracionMarca y sRefrigeracionModo cuando el remolque tenga esos datos — válido para cualquier tipo de remolque, normalmente los de frigo.",
+            "Mostrar estos mismos campos también en la grid de revisiones (bloque 5).",
+        ].forEach(bullet);
+        y += 4;
+
         // ══════════════════ PRECIO ══════════════════
         heading("Inversión y plazo");
+        paragraph(
+            "Pendiente de actualizar: el precio y el plazo de abajo todavía no incluyen los " +
+            "bloques 7 y 8 del alcance (sub-respuestas, evidencia en preguntas críticas y datos " +
+            "de refrigeración del remolque). Se van a recotizar.",
+            { size: 8.6, color: "#b45309", gap: 6 }
+        );
         row("Concepto", "Importe", { fill: true, bold: true });
         row("Desarrollo App Checklist — Fase 2 (alcance descrito arriba)", "USD 2.000");
         row("Total", "USD 2.000", { bold: true, fill: true });

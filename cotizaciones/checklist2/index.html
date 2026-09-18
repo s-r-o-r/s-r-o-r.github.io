@@ -56,7 +56,7 @@
         </div>
 
         <div class="hero-stats">
-            <div class="stat"><b data-count="6">0</b><span>bloques de alcance</span></div>
+            <div class="stat"><b data-count="8">0</b><span>bloques de alcance</span></div>
             <div class="stat"><b data-count="4">0</b><span>semanas de plazo</span></div>
             <div class="stat"><b data-count="2">0</b><span>pagos · anticipo + entrega</span></div>
             <div class="stat"><b data-count="1">0</b><span>ronda de ajustes incluida</span></div>
@@ -101,9 +101,9 @@
     <!-- ══════════════════ ALCANCE ══════════════════ -->
     <section class="section" id="alcance">
         <p class="section-kicker">02 · ALCANCE DEL TRABAJO</p>
-        <h2 class="section-title">Seis bloques, un mismo checklist más robusto</h2>
+        <h2 class="section-title">Ocho bloques, un mismo checklist más robusto</h2>
         <p class="section-lead">
-            El desarrollo se organiza en seis bloques, desde la entrada de la revisión hasta la
+            El desarrollo se organiza en ocho bloques, desde la entrada de la revisión hasta la
             grid final de auditoría — incluido el cambio de origen del tipo de vehículo, que es
             la tarea de mayor complejidad del alcance.
         </p>
@@ -216,6 +216,31 @@ WHERE v.sMatricula = '5524-MVW';</pre>
                     la consulta original (Fase 1 y Fase 2), no solo agregar los nuevos JOIN.
                 </p>
             </article>
+
+            <article class="scope-card reveal" style="--accent: var(--sky)">
+                <div class="scope-card-head">
+                    <div class="card-icon sky">7</div>
+                    <h3>Preguntas críticas más completas</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Desplegable para añadir <b>sub-respuestas</b> a una pregunta tipo check (p. ej. en carrocería: Frontal, lateral izquierdo, trasera, lateral derecho, interior), configurables como <b>texto libre separado por comas</b>, igual que las preguntas tipo Select.</li>
+                    <li>Al marcar <b>NOK</b> en el checklist, selección <b>múltiple</b> de esas sub-respuestas.</li>
+                    <li>Posibilidad de adjuntar <b>fotografía</b> al marcar una criticidad en una pregunta tipo check.</li>
+                    <li>Cuadro de <b>observaciones</b> (texto libre) al marcar NOK en preguntas tipo check.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--lime)">
+                <div class="scope-card-head">
+                    <div class="card-icon lime">8</div>
+                    <h3>Datos de refrigeración del remolque</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Relación con la tabla <b>tblvehiculos_equipamiento</b>.</li>
+                    <li>Mostrar <b>sRefrigeracionMarca</b> y <b>sRefrigeracionModo</b> cuando el remolque tenga esos datos — válido para cualquier tipo de remolque, normalmente los de frigo.</li>
+                    <li>Mostrar estos mismos campos también en la <b>grid de revisiones</b> (bloque 5).</li>
+                </ul>
+            </article>
         </div>
     </section>
 
@@ -226,6 +251,12 @@ WHERE v.sMatricula = '5524-MVW';</pre>
         <p class="section-lead">
             Precio cerrado para el desarrollo completo del alcance descrito arriba, en dos pagos y
             con un plazo estimado de entrega.
+        </p>
+
+        <p class="scope-note" style="--accent: var(--amber); margin-bottom: 24px;">
+            <b>Pendiente de actualizar:</b> el precio y el plazo de abajo todavía no incluyen los
+            bloques 7 y 8 (sub-respuestas, evidencia en preguntas críticas y datos de
+            refrigeración del remolque), agregados al alcance el 18/09/2026. Se van a recotizar.
         </p>
 
         <div class="quote-grid">
