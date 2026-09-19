@@ -301,11 +301,11 @@
         sectionLabel("Resuelto");
         [
             "Identificación: el chofer por DNI (ya está en la base de datos); los usuarios de la Control Tower con su propio usuario de Control Tower / Sigestrán, sin pedirles DNI aparte.",
-            "Historial propio y separado de WhatsApp — se descartó sincronizar por número de teléfono.",
-            "Notificación push de mensajes nuevos, igual que WhatsApp, tanto en la app como en la Control Tower.",
+            "Historial propio de conversaciones — se descartó sincronizar con un servicio externo por número de teléfono.",
+            "Notificación push de mensajes nuevos, tanto en la app como en la Control Tower.",
             "Mensajería en tiempo real vía socket (WebSocket), sin necesidad de refrescar la conversación.",
             "Alcance mínimo: texto, foto, documento y audio — el audio es clave porque escriben conductores.",
-            "Los grupos sí entran en el alcance (ya usan grupos de WhatsApp para organizarse, por ejemplo por gestor).",
+            "Los grupos sí entran en el alcance (ya organizan a los choferes en grupos, por ejemplo por gestor).",
             "La Control Tower (web) necesita la misma función de chat que la app.",
         ].forEach(bullet);
         y += 3;
