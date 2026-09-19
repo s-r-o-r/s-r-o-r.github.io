@@ -269,17 +269,7 @@
             "Grabar y enviar notas de voz desde la app del chofer.",
             "Reproducir el audio recibido, tanto en la app como en la Control Tower.",
         ].forEach(bullet);
-        paragraph(
-            "A validar: la grabación y reproducción de audio suele ser el punto de mayor " +
-            "complejidad técnica de un chat multimedia — conviene confirmar formatos y duración " +
-            "máxima antes de cerrar el alcance.",
-            { size: 8.6, color: MUTED, gap: 6 }
-        );
-        paragraph(
-            "Según lo hablado en la reunión: el audio fue una propuesta de Servisofts (no un " +
-            "pedido explícito), y quedó acordado incluirlo sin costo adicional.",
-            { size: 8.6, color: "#15803d", gap: 6 }
-        );
+        y += 3;
 
         sectionLabel("7. Chats grupales");
         [
