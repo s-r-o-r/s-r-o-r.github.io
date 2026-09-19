@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Control Tower — Cotización de desarrollo</title>
+    <meta name="description" content="Propuesta de desarrollo de un chat dedicado entre la app de choferes y la Control Tower — microservicio y base de datos propios, con mensajes, imágenes, documentos, audios y grupos.">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ══════════════════ FONDO GLOBAL ══════════════════ -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+    <!-- ══════════════════ NAV ══════════════════ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-dot"></span>
+                <span class="brand-name">CHAT <b>CONTROL TOWER</b></span>
+            </a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="../../">Inicio</a>
+                <a href="../">Cotizaciones</a>
+                <a href="#descripcion">Descripción</a>
+                <a href="#alcance">Alcance</a>
+                <a href="#preguntas">Definiciones</a>
+                <a href="#cotizacion">Inversión</a>
+            </div>
+            <span class="nav-badge">cotización · en revisión</span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <header class="hero" id="top">
+        <p class="hero-kicker">CHAT CONTROL TOWER · COTIZACIÓN DE DESARROLLO</p>
+        <h1 class="hero-title">
+            Un canal directo<br>
+            entre cada <span class="grad">chofer</span><br>
+            y la Control Tower.
+        </h1>
+        <p class="hero-sub">
+            Un <b>WhatsApp básico y propio</b> de la Control Tower: nuevo microservicio y base de
+            datos dedicados para registrar la mensajería entre los choferes —identificados por
+            <b>DNI</b> desde la app— y los usuarios de la <b>Control Tower</b> (web), con texto,
+            imágenes, documentos, audios y grupos.
+        </p>
+
+        <div class="hero-cta">
+            <a class="btn btn-primary" href="#alcance">Ver alcance propuesto</a>
+            <a class="btn btn-ghost" href="#preguntas">Ver definiciones de la reunión</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat"><b data-count="8">0</b><span>bloques de alcance propuestos</span></div>
+            <div class="stat"><b data-count="4">0</b><span>tipos de contenido · texto, imagen, doc, audio</span></div>
+            <div class="stat"><b data-count="2">0</b><span>frentes a integrar · app y Control Tower</span></div>
+            <div class="stat"><b data-count="1">0</b><span>microservicio y BD dedicados</span></div>
+        </div>
+    </header>
+
+    <main>
+
+    <!-- ══════════════════ DESCRIPCIÓN ══════════════════ -->
+    <section class="section" id="descripcion">
+        <p class="section-kicker">01 · DESCRIPCIÓN DEL PROYECTO</p>
+        <h2 class="section-title">Un chat propio, separado del resto del sistema</h2>
+        <p class="section-lead">
+            La Control Tower ya tiene una app para choferes —donde cada uno ingresa con su
+            <b>DNI</b> y accede a distintas opciones— y una web con distintos usuarios internos.
+            El objetivo es crear una <b>base de datos y un microservicio aparte</b> para registrar
+            los chats entre choferes y usuarios de la Control Tower, tanto desde la app como desde
+            la web, con soporte para mensajes, imágenes, documentos, audios y grupos.
+        </p>
+
+        <div class="video-box reveal">
+            <div class="video-frame">
+                <video id="chatVideo" controls preload="metadata">
+                    <source src="https://drive.servisofts.com/http/serp/e854172e-726b-440e-bb0c-083f6eeff44e/Reuniones/2026-09-18%2009-08-32.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+            <p class="video-caption">
+                <span class="video-tag">GRABACIÓN</span>
+                Reunión de definición de alcance · <b>18 de septiembre, 2026</b>
+            </p>
+        </div>
+
+        <div class="cards-3">
+            <article class="card reveal">
+                <div class="card-icon cyan">⇄</div>
+                <h3>Chofer ⇄ Control Tower</h3>
+                <p>Conversación directa entre la app del chofer (identificado por <b>DNI</b>) y
+                los usuarios de la Control Tower en la web.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon amber">▣</div>
+                <h3>Servicio independiente</h3>
+                <p>Base de datos y <b>microservicio propios</b> para el chat, separados del resto
+                del sistema.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon violet">☰</div>
+                <h3>Multiformato y grupos</h3>
+                <p>Texto, <b>imágenes</b>, <b>documentos</b> y <b>audios</b> en la misma
+                conversación, con posibilidad de crear <b>grupos</b>.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ ALCANCE ══════════════════ -->
+    <section class="section" id="alcance">
+        <p class="section-kicker">02 · ALCANCE PROPUESTO</p>
+        <h2 class="section-title">Ocho bloques para levantar el chat de punta a punta</h2>
+        <p class="section-lead">
+            Alcance ya ajustado con lo definido en la reunión (ver <a href="#preguntas">definiciones
+            de la reunión</a>): un chat básico — texto, foto, documento, audio y grupos —
+            vinculado al DNI del chofer.
+        </p>
+
+        <div class="scope-list">
+            <article class="scope-card reveal" style="--accent: var(--amber)">
+                <div class="scope-card-head">
+                    <div class="card-icon amber">1</div>
+                    <h3>Arquitectura: microservicio y base de datos dedicados</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Nuevo <b>microservicio</b> exclusivo para el chat, separado del resto de servicios de la Control Tower.</li>
+                    <li><b>Base de datos propia</b> para conversaciones, mensajes, grupos y adjuntos.</li>
+                    <li>Comunicación en <b>tiempo real vía socket (WebSocket)</b>, para que los mensajes lleguen sin necesidad de refrescar.</li>
+                    <li>Definición de cómo la app del chofer y la web de la Control Tower <b>consumen este servicio</b> (API del chat).</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--cyan)">
+                <div class="scope-card-head">
+                    <div class="card-icon cyan">2</div>
+                    <h3>Identificación de choferes y usuarios</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>El chofer se identifica en el chat con su <b>DNI</b> — ya existe en la base de datos, no requiere alta adicional.</li>
+                    <li>Cada chat queda vinculado al <b>DNI</b>, no a la matrícula del vehículo: si el chofer cambia de matrícula, conserva su historial de conversación.</li>
+                    <li>Los usuarios de la Control Tower (gestores, etc.) se identifican con su <b>propio usuario de Control Tower / Sigestrán</b> — no se les pide DNI aparte, para no complicar el alta.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--violet)">
+                <div class="scope-card-head">
+                    <div class="card-icon violet">3</div>
+                    <h3>Mensajería de texto</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Conversación 1 a 1 con <b>historial de mensajes</b> ordenado por fecha.</li>
+                    <li>Estado básico del mensaje (enviado / recibido) y aviso de <b>mensajes nuevos</b>.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--pink)">
+                <div class="scope-card-head">
+                    <div class="card-icon pink">4</div>
+                    <h3>Envío de imágenes</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Adjuntar y visualizar <b>imágenes</b> dentro de la conversación, desde la app y desde la web.</li>
+                    <li>Miniatura en el chat y vista ampliada al abrir la imagen.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--green)">
+                <div class="scope-card-head">
+                    <div class="card-icon green">5</div>
+                    <h3>Envío de documentos</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Adjuntar <b>documentos</b> (PDF, Excel, Word, etc.) en la conversación.</li>
+                    <li>Descarga del documento desde la app y desde la web.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--red)">
+                <div class="scope-card-head">
+                    <div class="card-icon red">6</div>
+                    <h3>Mensajes de audio</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li><b>Grabar y enviar</b> notas de voz desde la app del chofer.</li>
+                    <li><b>Reproducir</b> el audio recibido, tanto en la app como en la Control Tower.</li>
+                </ul>
+                <p class="scope-note">
+                    <b>A validar:</b> la grabación y reproducción de audio suele ser el punto de
+                    mayor complejidad técnica de un chat multimedia — conviene confirmar formatos
+                    y duración máxima antes de cerrar el alcance.
+                </p>
+                <p class="scope-note" style="--accent: var(--green); margin-top: 10px;">
+                    <b>Según lo hablado en la reunión:</b> el audio fue una propuesta de Servisofts
+                    (no un pedido explícito), y quedó acordado incluirlo sin costo adicional.
+                </p>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--sky)">
+                <div class="scope-card-head">
+                    <div class="card-icon sky">7</div>
+                    <h3>Chats grupales</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li><b>Crear grupos</b> con varios choferes y/o usuarios de la Control Tower.</li>
+                    <li>Administración básica del grupo: nombre, participantes, agregar o quitar miembros.</li>
+                </ul>
+            </article>
+
+            <article class="scope-card reveal" style="--accent: var(--lime)">
+                <div class="scope-card-head">
+                    <div class="card-icon lime">8</div>
+                    <h3>Integración en la app y en la Control Tower</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Pantalla de chat dentro de la <b>app del chofer</b>, junto a sus opciones actuales.</li>
+                    <li>Bandeja de conversaciones dentro de la <b>Control Tower</b> (web), para que los usuarios internos gestionen sus chats.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ DEFINICIONES DE LA REUNIÓN ══════════════════ -->
+    <section class="section" id="preguntas">
+        <p class="section-kicker">03 · DEFINICIONES DE LA REUNIÓN</p>
+        <h2 class="section-title">Lo que ya quedó definido, y lo que falta cerrar</h2>
+        <p class="section-lead">
+            En la reunión de alcance se resolvieron la mayoría de los puntos abiertos. Quedan
+            algunos detalles menores para afinar antes de cerrar precio y plazo.
+        </p>
+
+        <div class="timeline">
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Identificación por DNI (choferes) y usuario propio (Control Tower)</h3>
+                <p>
+                    El chofer se identifica con su <b>DNI</b> — ya está en la base de datos, no se
+                    lo va a hacer registrar aparte. Los usuarios de la Control Tower (gestores,
+                    etc.) usan su <b>propio usuario de Control Tower / Sigestrán</b>; no se les pide
+                    DNI, para no complicar el alta del día a día.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Historial propio, separado de WhatsApp</h3>
+                <p>
+                    Se evaluó vincular el chat a un número de teléfono para sincronizar a futuro
+                    con WhatsApp, pero se descartó: quieren el historial de conversaciones
+                    <b>separado</b>, que no se pierda ni se mezcle con los chats de WhatsApp.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Notificación push, igual que WhatsApp</h3>
+                <p>
+                    Tanto en la app del chofer como en la Control Tower, debe llegar una
+                    <b>notificación push</b> cuando alguien escribe — el mismo comportamiento que
+                    ya existe hoy para el rastreo.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Mensajería en tiempo real, vía socket</h3>
+                <p>
+                    La entrega de mensajes dentro del chat va a ser por <b>socket (WebSocket)</b>,
+                    para que funcione en tiempo real — sin necesidad de refrescar la conversación.
+                    La notificación push cubre el caso de la app en segundo plano o cerrada.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Alcance mínimo: texto, foto, documento y audio</h3>
+                <p>
+                    Se define el alcance básico: mensajes de <b>texto</b>, <b>foto</b>,
+                    <b>documento</b> y <b>audio</b>. El audio es especialmente importante porque
+                    quienes escriben son conductores.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Los grupos sí entran en el alcance</h3>
+                <p>
+                    Aunque al inicio se dudó, se confirmó que <b>sí se incluyen grupos</b> — hoy ya
+                    usan grupos de WhatsApp para organizarse (por gestor, por ejemplo), y quieren
+                    poder reproducir eso dentro del chat propio.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">RESUELTO</span>Mismo chat en la Control Tower (web)</h3>
+                <p>
+                    La Control Tower necesita la misma función de chat que la app, para que los
+                    usuarios internos puedan hablar con los choferes desde la web.
+                </p>
+                <span class="tl-stamp tl-stamp-resolved">Confirmado en reunión</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ COTIZACIÓN ══════════════════ -->
+    <section class="section" id="cotizacion">
+        <p class="section-kicker">04 · PROPUESTA ECONÓMICA</p>
+        <h2 class="section-title">Inversión y plazo estimados</h2>
+        <p class="section-lead">
+            Estimación preliminar sobre el alcance de los 8 bloques descritos arriba.
+        </p>
+
+        <p class="scope-note" style="--accent: var(--amber); margin-bottom: 24px;">
+            <b>En revisión:</b> este precio y plazo son una primera estimación, todavía sujeta a
+            ajuste mientras se cierran los últimos <a href="#preguntas">puntos pendientes</a> de la
+            reunión.
+        </p>
+
+        <div class="quote-grid">
+            <div class="quote-card reveal">
+                <p class="quote-card-kicker">Precio total</p>
+                <div class="quote-price">USD 3.500</div>
+                <div class="quote-split">
+                    <div class="quote-split-item">
+                        <span class="quote-split-amount">USD 1.750</span>
+                        <span class="quote-split-label">Anticipo — al iniciar el proyecto</span>
+                    </div>
+                    <span class="quote-split-plus">+</span>
+                    <div class="quote-split-item">
+                        <span class="quote-split-amount">USD 1.750</span>
+                        <span class="quote-split-label">Contra entrega</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card reveal">
+                <p class="quote-card-kicker">Plazo estimado</p>
+                <div class="quote-phase">
+                    <span class="quote-phase-badge cyan">5 sem.</span>
+                    <div>
+                        <h4>Desarrollo</h4>
+                        <p>Arquitectura (microservicio, BD y socket), identificación, mensajería,
+                        adjuntos, audio, grupos e integración en app y Control Tower.</p>
+                    </div>
+                </div>
+                <div class="quote-phase">
+                    <span class="quote-phase-badge green">2 sem.</span>
+                    <div>
+                        <h4>QA</h4>
+                        <p>Pruebas de mensajería en tiempo real, multimedia (imagen, documento,
+                        audio) y grupos, en app y web.</p>
+                    </div>
+                </div>
+                <div class="quote-total">Total: <b>7 semanas</b></div>
+                <div class="quote-start">El plazo se cuenta <b>desde la confirmación del anticipo</b></div>
+            </div>
+        </div>
+
+        <h3 class="group-title cyan-t" style="margin-top: 36px;">Cómo se compone el estimado</h3>
+        <p class="section-lead" style="margin-bottom: 20px;">
+            Esfuerzo de desarrollo por bloque de alcance (5 semanas ≈ 25 días hábiles), más 2
+            semanas de QA sobre el conjunto.
+        </p>
+        <div class="effort-table-wrap">
+            <table class="effort-table">
+                <thead>
+                    <tr><th>Bloque</th><th>Esfuerzo</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1. Arquitectura: microservicio, BD y socket (WebSocket)</td><td>6 días</td></tr>
+                    <tr><td>2. Identificación de choferes y usuarios</td><td>2-3 días</td></tr>
+                    <tr><td>3. Mensajería de texto</td><td>3-4 días</td></tr>
+                    <tr><td>4. Envío de imágenes</td><td>2-3 días</td></tr>
+                    <tr><td>5. Envío de documentos</td><td>1-2 días</td></tr>
+                    <tr><td>6. Mensajes de audio</td><td>4 días</td></tr>
+                    <tr><td>7. Chats grupales</td><td>3-4 días</td></tr>
+                    <tr><td>8. Integración en app y Control Tower</td><td>5 días</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="scope-note" style="--accent: var(--green); margin-top: 20px;">
+            <b>Sobre el audio:</b> fue una propuesta de Servisofts, no un pedido explícito de ROR,
+            así que quedó acordado incluirlo sin costo adicional — ya está contemplado dentro del
+            estimado de arriba, no se resta ni se factura aparte.
+        </p>
+
+        <h3 class="group-title violet-t" style="margin-top: 36px;">Condiciones habituales</h3>
+        <div class="ms-grid" style="--accent: var(--violet)">
+            <div class="ms-card">
+                <h4>Forma de pago</h4>
+                <p><b>50%</b> como anticipo para iniciar el desarrollo y <b>50%</b> contra entrega.</p>
+            </div>
+            <div class="ms-card">
+                <h4>Plazo</h4>
+                <p><b>7 semanas</b>, contadas a partir de la confirmación del anticipo.</p>
+            </div>
+            <div class="ms-card">
+                <h4>Incluye</h4>
+                <p>Ambiente de pruebas y <b>una ronda de ajustes menores</b> post-entrega.</p>
+            </div>
+        </div>
+
+        <div class="quote-actions">
+            <button type="button" class="btn btn-ghost" id="btnExportPdf">▤ Ver propuesta en PDF</button>
+        </div>
+    </section>
+
+    <!-- ══════════════════ CIERRE ══════════════════ -->
+    <section class="section closing">
+        <div class="closing-box reveal">
+            <h2>El resultado esperado</h2>
+            <p>
+                Un <b>chat propio de la Control Tower</b>, con su base de datos y microservicio
+                separados del resto del sistema, donde cada chofer conversa con la Control Tower
+                —de forma individual o en grupo— usando texto, imágenes, documentos y audios,
+                desde la app o desde la web.
+            </p>
+            <p class="closing-sign">Cerramos los últimos puntos pendientes y pasamos a precio y plazo cerrados.</p>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="brand"><span class="brand-dot"></span> <b>CHAT · CONTROL TOWER</b></span>
+            <span>Propuesta de desarrollo para <a href="https://rorlogistico.com" target="_blank" rel="noopener">rorlogistico.com</a></span>
+            <a href="https://servisofts.com" target="_blank" rel="noopener">servisofts.com</a>
+        </div>
+    </footer>
+
+    <!-- ══════════════════ MODAL PDF ══════════════════ -->
+    <div class="pdf-modal" id="pdfModal" aria-hidden="true">
+        <div class="pdf-modal-backdrop" id="pdfModalBackdrop"></div>
+        <div class="pdf-modal-panel">
+            <div class="pdf-modal-header">
+                <span id="pdfModalTitle">Propuesta · Chat Control Tower</span>
+                <div class="pdf-modal-actions">
+                    <button type="button" class="btn btn-ghost btn-sm" id="btnDownloadPdf">⭳ Descargar</button>
+                    <button type="button" class="pdf-modal-close" id="btnClosePdf" aria-label="Cerrar vista previa">✕</button>
+                </div>
+            </div>
+            <iframe id="pdfFrame" class="pdf-modal-frame" title="Vista previa de la propuesta en PDF"></iframe>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
