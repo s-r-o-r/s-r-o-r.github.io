@@ -318,13 +318,13 @@
             { size: 9, color: "#b45309", bold: true, gap: 6 }
         );
         row("Concepto", "Importe", { fill: true, bold: true });
-        row("Desarrollo Chat Control Tower (alcance descrito arriba)", "USD 3.500");
-        row("Total", "USD 3.500", { bold: true, fill: true });
+        row("Desarrollo Chat Control Tower (alcance descrito arriba)", "USD 4.000");
+        row("Total", "USD 4.000", { bold: true, fill: true });
         y += 8;
 
         sectionLabel("Forma de pago");
-        row("Anticipo — al iniciar el desarrollo (50%)", "USD 1.750");
-        row("Contra entrega (50%)", "USD 1.750");
+        row("Anticipo — al iniciar el desarrollo (50%)", "USD 2.000");
+        row("Contra entrega (50%)", "USD 2.000");
         y += 8;
 
         sectionLabel("Plazo de entrega");
@@ -343,12 +343,6 @@
         row("7. Chats grupales", "3-4 días");
         row("8. Integración en app y Control Tower", "5 días");
         y += 4;
-        paragraph(
-            "Sobre el audio: fue una propuesta de Servisofts, no un pedido explícito de ROR, así " +
-            "que quedó acordado incluirlo sin costo adicional — ya está contemplado dentro del " +
-            "estimado de arriba, no se resta ni se factura aparte.",
-            { size: 8.6, color: "#15803d", gap: 8 }
-        );
 
         // ══════════════════ CONDICIONES ══════════════════
         heading("Condiciones habituales");
