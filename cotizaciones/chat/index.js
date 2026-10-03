@@ -319,12 +319,13 @@
         );
         row("Concepto", "Importe", { fill: true, bold: true });
         row("Desarrollo Chat Control Tower (alcance descrito arriba)", "USD 4.000");
-        row("Total", "USD 4.000", { bold: true, fill: true });
+        row("Descuento (10%)", "- USD 400");
+        row("Total", "USD 3.600", { bold: true, fill: true });
         y += 8;
 
         sectionLabel("Forma de pago");
-        row("Anticipo — al iniciar el desarrollo (50%)", "USD 2.000");
-        row("Contra entrega (50%)", "USD 2.000");
+        row("Anticipo — al iniciar el desarrollo (50%)", "USD 1.800");
+        row("Contra entrega (50%)", "USD 1.800");
         y += 8;
 
         sectionLabel("Plazo de entrega");

@@ -594,6 +594,24 @@ ul { list-style: none; }
     color: var(--cyan); text-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
     line-height: 1; margin-bottom: 24px;
 }
+.quote-price-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+}
+.quote-price-original {
+    font-family: var(--mono); font-size: 1.1rem; color: var(--muted);
+    text-decoration: line-through;
+}
+.quote-discount-badge {
+    font-family: var(--mono); font-weight: 700; font-size: 0.74rem;
+    letter-spacing: 0.04em; color: var(--green);
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    border-radius: 999px; padding: 3px 10px;
+}
+.quote-price.has-discount { margin-bottom: 4px; }
+.quote-discount-note {
+    font-size: 0.82rem; color: var(--green); margin: 0 0 24px;
+}
 .quote-split { display: flex; align-items: center; gap: 14px; }
 .quote-split-item {
     flex: 1; text-align: center;
