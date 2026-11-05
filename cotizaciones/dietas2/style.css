@@ -621,7 +621,6 @@ ul { list-style: none; }
     font-family: var(--mono); font-size: 0.9rem; color: var(--muted);
 }
 .scope-price-row span:last-child { white-space: nowrap; }
-.scope-price-row span:last-child { white-space: nowrap; }
 .scope-price-add { color: var(--amber); font-weight: 700; }
 .scope-price-total {
     margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--line);
