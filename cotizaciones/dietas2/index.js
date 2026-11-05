@@ -484,6 +484,28 @@
         row("Desarrollo", "4 semanas");
         row("QA", "2 semanas");
         row("Total estimado", "6 semanas", { bold: true, fill: true });
+        y += 8;
+
+        // ══════════════════ CAMBIO DE ALCANCE ══════════════════
+        heading("Cambio de alcance — ajuste de dieta por hora de llegada", 40);
+        paragraph(
+            "Fuera de la cotización original. Solicitado el 3 de noviembre de 2026: la dieta " +
+            "del día también se ajusta según la hora de llegada del conductor, no solo la de salida."
+        );
+        sectionLabel("Salidas");
+        row("Antes de las 12:00", "3N");
+        row("Desde las 12:00", "2N");
+        row("Desde las 20:00", "1N");
+        y += 6;
+        sectionLabel("Llegadas");
+        row("Hasta las 12:00", "1N");
+        row("De 12:01 a 16:00", "2N");
+        row("De 16:01 a 22:00", "3N");
+        y += 6;
+        sectionLabel("Importe");
+        row("Cotización original (Etapa 2)", "3.000,00 €");
+        row("Cambio de alcance: ajuste por llegadas", "500,00 €");
+        row("Nuevo total", "3.500,00 €", { bold: true, fill: true });
 
         // ══════════════════ NUMERACIÓN DE PÁGINAS ══════════════════
         const totalPages = doc.internal.getNumberOfPages();

@@ -576,6 +576,61 @@ ul { list-style: none; }
 .quote-progress b { color: var(--cyan); }
 .quote-progress .done b { color: var(--green); }
 
+/* ── Cambio de alcance ── */
+.scope-change {
+    margin-top: 22px; padding: 30px;
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px dashed rgba(251, 191, 36, 0.55);
+    border-radius: var(--radius);
+}
+.scope-change-head {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 10px; margin-bottom: 14px;
+}
+.scope-change-badge {
+    font-family: var(--mono); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.16em;
+    color: #05070d; background: var(--amber); border-radius: 8px; padding: 6px 12px;
+}
+.scope-change-date { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+.scope-change h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.scope-change-lead { color: var(--muted); font-size: 0.92rem; max-width: 720px; margin-bottom: 20px; }
+.scope-change-lead b { color: var(--text); }
+.scope-change-rules {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px; margin-bottom: 22px;
+}
+.scope-rule-col {
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 18px;
+}
+.scope-rule-title {
+    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.18em;
+    color: var(--amber); text-transform: uppercase; margin-bottom: 10px;
+}
+.scope-rule-col ul { list-style: none; display: grid; gap: 8px; }
+.scope-rule-col li { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; }
+.scope-code {
+    font-family: var(--mono); font-weight: 700; font-size: 0.82rem;
+    min-width: 44px; text-align: center; border-radius: 8px; padding: 4px 6px;
+    color: var(--amber); background: rgba(251, 191, 36, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.3);
+}
+.scope-change-price { border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 8px; }
+.scope-price-row {
+    display: flex; justify-content: space-between; gap: 12px;
+    font-family: var(--mono); font-size: 0.9rem; color: var(--muted);
+}
+.scope-price-row span:last-child { white-space: nowrap; }
+.scope-price-add { color: var(--amber); font-weight: 700; }
+.scope-price-total {
+    margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--line);
+    color: var(--text); font-weight: 800; font-size: 1.1rem;
+}
+@media (max-width: 520px) {
+    .scope-change { padding: 22px 18px; }
+    .scope-price-row { font-size: 0.82rem; }
+}
+
 .quote-actions { margin-top: 22px; }
 
 /* ── Cierre ───────────────────────────────────────────────── */
