@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dietas · Etapa 2 — Documentación técnica</title>
     <meta name="description" content="Propuesta de reglas y simulador interactivo del motor de dietas — Etapa 2.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ROR Control Tower · Servisofts">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:url" content="https://s-r-o-r.github.io/cotizaciones/dietas2/">
+    <meta property="og:title" content="Dietas · Etapa 2 — Documentación técnica">
+    <meta property="og:description" content="Propuesta de reglas y simulador interactivo del motor de dietas — Etapa 2.">
+    <meta property="og:image" content="https://s-r-o-r.github.io/assets/og/og-dietas2.jpg">
+    <meta property="og:image:secure_url" content="https://s-r-o-r.github.io/assets/og/og-dietas2.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Dietas · Etapa 2 — Documentación técnica">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dietas · Etapa 2 — Documentación técnica">
+    <meta name="twitter:description" content="Propuesta de reglas y simulador interactivo del motor de dietas — Etapa 2.">
+    <meta name="twitter:image" content="https://s-r-o-r.github.io/assets/og/og-dietas2.jpg">
+    <link rel="canonical" href="https://s-r-o-r.github.io/cotizaciones/dietas2/">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -494,6 +511,54 @@
                 <div class="quote-total">Total: <b>6 semanas</b></div>
                 <div class="quote-start">Inicio del proyecto: <b>2 de septiembre</b></div>
                 <div class="quote-progress" id="quoteProgress"></div>
+            </div>
+        </div>
+
+        <!-- ══════════ CAMBIO DE ALCANCE ══════════ -->
+        <div class="scope-change reveal" id="cambio-alcance">
+            <div class="scope-change-head">
+                <span class="scope-change-badge">CAMBIO DE ALCANCE</span>
+                <span class="scope-change-date">Solicitado el 3 de noviembre, 2026</span>
+            </div>
+            <h3>Ajuste de dieta por hora de llegada</h3>
+            <p class="scope-change-lead">
+                Fuera de la cotización original. A pedido de negocio, la dieta del día ya no se
+                calcula solo con la hora de <b>salida</b>: también se ajusta según la hora de
+                <b>llegada</b> del conductor.
+            </p>
+
+            <div class="scope-change-rules">
+                <div class="scope-rule-col">
+                    <p class="scope-rule-title">Salidas</p>
+                    <ul>
+                        <li><span class="scope-code">3N</span> Antes de las 12:00</li>
+                        <li><span class="scope-code">2N</span> Desde las 12:00</li>
+                        <li><span class="scope-code">1N</span> Desde las 20:00</li>
+                    </ul>
+                </div>
+                <div class="scope-rule-col">
+                    <p class="scope-rule-title">Llegadas</p>
+                    <ul>
+                        <li><span class="scope-code">1N</span> Hasta las 12:00</li>
+                        <li><span class="scope-code">2N</span> De 12:01 a 16:00</li>
+                        <li><span class="scope-code">3N</span> De 16:01 a 22:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scope-change-price">
+                <div class="scope-price-row">
+                    <span>Cotización original (Etapa 2)</span>
+                    <span>3.000 €</span>
+                </div>
+                <div class="scope-price-row scope-price-add">
+                    <span>Cambio de alcance: ajuste por llegadas</span>
+                    <span>+ 500 €</span>
+                </div>
+                <div class="scope-price-row scope-price-total">
+                    <span>Nuevo total</span>
+                    <span>3.500 €</span>
+                </div>
             </div>
         </div>
 
