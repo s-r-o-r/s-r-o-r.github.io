@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría 05/11/2026 — Caída del servidor ROR</title>
+    <meta name="description" content="Informe de incidente elaborado por Servisofts: reinicio no planificado del servidor de producción de ROR el 5 de noviembre de 2026.">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ══════════════════ FONDO GLOBAL ══════════════════ -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+    <!-- ══════════════════ NAV ══════════════════ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-dot"></span>
+                <span class="brand-name">AUDITORÍA <b>05/11/2026</b></span>
+            </a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="../../">Inicio</a>
+                <a href="../">Auditorías</a>
+                <a href="#cronologia">Cronología</a>
+                <a href="#evidencias">Evidencias</a>
+                <a href="#historial">Historial</a>
+                <a href="#recomendaciones">Recomendaciones</a>
+            </div>
+            <span class="nav-badge">incidente · servidor ror</span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <header class="hero" id="top">
+        <p class="hero-kicker">INFORME DE INCIDENTE · ELABORADO POR SERVISOFTS</p>
+        <h1 class="hero-title">
+            El servidor de ROR<br>
+            se <span class="grad">apagó de golpe</span><br>
+            el 5 de noviembre.
+        </h1>
+        <p class="hero-sub">
+            El servidor de producción (<b>ror</b> · hostname <b>did14</b>) dejó de funcionar a las
+            <b>08:25 CET</b> sin ningún aviso y volvió a arrancar a las <b>13:10 CET</b>. No fue un
+            reinicio ordenado ni una sobrecarga: todo apunta a una causa externa al sistema, y
+            es la <b>tercera caída de este tipo en dos semanas</b>.
+        </p>
+
+        <div class="hero-cta">
+            <a class="btn btn-primary" href="#recomendaciones">Ver recomendaciones</a>
+            <a class="btn btn-ghost" href="doc.pdf" target="_blank" rel="noopener">▤ Descargar informe en PDF</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat"><b data-count="285">0</b><span>minutos sin servicio (4 h 45 min)</span></div>
+            <div class="stat"><b data-count="3">0</b><span>caídas no planificadas en 2 semanas</span></div>
+            <div class="stat"><b data-count="24">0</b><span>horas aprox. sin servicio en total</span></div>
+            <div class="stat"><b data-count="0">0</b><span>errores registrados antes de la caída</span></div>
+        </div>
+    </header>
+
+    <main>
+
+    <!-- ══════════════════ RESUMEN ══════════════════ -->
+    <section class="section" id="resumen">
+        <p class="section-kicker">01 · RESUMEN</p>
+        <h2 class="section-title">Qué pasó, en tres puntos</h2>
+        <p class="section-lead">
+            Revisión realizada el <b>6 de noviembre de 2026</b> sobre los registros del propio
+            servidor. Todas las horas están en <b>CET</b> (hora de Europa central, la del servidor).
+        </p>
+
+        <div class="cards-3">
+            <article class="card reveal">
+                <div class="card-icon red">⏻</div>
+                <h3>Apagado abrupto</h3>
+                <p>Los registros se cortan en seco a las <b>08:25:01</b>. No hay mensajes de apagado,
+                errores ni fallos del sistema antes de la caída.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon green">◔</div>
+                <h3>Recursos normales</h3>
+                <p>Carga de CPU alrededor de <b>0.2</b> y memoria al <b>3 %</b>. Se descarta una
+                sobrecarga del servidor como causa.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon amber">↻</div>
+                <h3>Problema recurrente</h3>
+                <p>El historial muestra otras caídas iguales el <b>23/10</b> y el <b>26/10</b>.
+                Patrón compatible con fallo de hardware o del proveedor.</p>
+            </article>
+        </div>
+
+        <h3 class="group-title cyan-t" style="margin-top: 36px;">Datos del servidor</h3>
+        <div class="effort-table-wrap reveal">
+            <table class="effort-table">
+                <tbody>
+                    <tr><td>Cliente</td><td>ROR Logístico</td></tr>
+                    <tr><td>Elaborado por</td><td>Servisofts</td></tr>
+                    <tr><td>Fecha del informe</td><td>06/11/2026</td></tr>
+                    <tr><td>Servidor</td><td>ror · did14 · 94.23.84.221</td></tr>
+                    <tr><td>Sistema</td><td>Ubuntu · kernel 6.8.0-147</td></tr>
+                    <tr><td>Estado actual</td><td class="ok">Operativo desde 05/11 13:10</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ══════════════════ CRONOLOGÍA ══════════════════ -->
+    <section class="section" id="cronologia">
+        <p class="section-kicker">02 · CRONOLOGÍA</p>
+        <h2 class="section-title">El 5 de noviembre, hora por hora</h2>
+
+        <div class="timeline">
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">07:40 – 08:25</span>Funcionamiento normal</h3>
+                <p>Solo tareas programadas rutinarias: estadísticas del sistema (sysstat) y cron.
+                A las 08:13 hubo avisos al sincronizar la hora con <b>ntp.ubuntu.com</b>; son
+                habituales y no afectan al servicio (el otro servicio de hora se ajustó bien a las 08:15).</p>
+                <span class="tl-stamp tl-stamp-resolved">Sin incidencias</span>
+            </div>
+
+            <div class="tl-item tl-down reveal">
+                <h3><span class="tl-phase">08:25:01</span>Último registro del sistema</h3>
+                <p>A partir de aquí no hay <b>ningún mensaje</b>: ni apagado de servicios, ni errores,
+                ni fallo del kernel. El servidor se detiene de forma instantánea.</p>
+                <span class="tl-stamp tl-stamp-down">Caída</span>
+            </div>
+
+            <div class="tl-item tl-down reveal">
+                <h3><span class="tl-phase">08:25 – 13:10</span>Servidor sin servicio</h3>
+                <p>Unas <b>4 horas y 45 minutos</b> sin ningún registro.</p>
+                <span class="tl-stamp tl-stamp-down">4 h 45 min fuera de línea</span>
+            </div>
+
+            <div class="tl-item tl-resolved reveal">
+                <h3><span class="tl-phase">13:10:32</span>Arranque del sistema</h3>
+                <p>Al iniciar, el sistema detecta que el registro se cerró mal y <b>repara el disco</b>
+                <b>/dev/sda2</b>, señales claras de un apagado no limpio.</p>
+                <span class="tl-stamp tl-stamp-resolved">Servicio restablecido</span>
+            </div>
+
+            <div class="tl-item reveal">
+                <h3><span class="tl-phase">14:34 – 14:35</span>Acceso SSH</h3>
+                <p>Entrada del usuario <b>ubuntu</b> desde la IP 177.222.109.163 durante un minuto,
+                ya después del arranque.</p>
+                <span class="tl-stamp">Posterior al incidente</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════ EVIDENCIAS ══════════════════ -->
+    <section class="section" id="evidencias">
+        <p class="section-kicker">03 · EVIDENCIAS</p>
+        <h2 class="section-title">Lo que dicen los registros del servidor</h2>
+        <p class="section-lead">
+            Fuentes consultadas: <b>journalctl</b> (registro de systemd), <b>last / wtmp</b>
+            (historial de arranques) y <b>sysstat / sar</b> (uso de recursos).
+        </p>
+
+        <div class="code-compare">
+            <div class="code-block old reveal">
+                <span class="code-block-label old">Antes de la caída · últimas líneas</span>
+<pre>Nov 05 08:20:20 systemd: Finished sysstat-collect.service
+Nov 05 08:25:01 CRON: (root) CMD (debian-sa1 1 1)
+Nov 05 08:25:01 CRON: session closed for user root
+                                  ← fin del registro</pre>
+            </div>
+            <div class="code-block new reveal">
+                <span class="code-block-label new">Al arrancar · 13:10</span>
+<pre>systemd-journald: system.journal corrupted
+  or uncleanly shut down, renaming and replacing.
+systemd-fsck[586]: /dev/sda2: recovering journal</pre>
+            </div>
+        </div>
+
+        <div class="sim-alert reveal">
+            <b>Sin errores previos:</b> en el periodo anterior a la caída no se encontraron mensajes
+            de error, falta de memoria (OOM), fallos del kernel (panic), bloqueos ni errores de disco.
+        </div>
+
+        <h3 class="group-title green-t" style="margin-top: 36px;">Uso de recursos antes de la caída</h3>
+        <div class="effort-table-wrap reveal">
+            <table class="effort-table">
+                <thead>
+                    <tr><th>Hora</th><th>Carga 1 min</th><th>Carga 15 min</th><th>Procesos bloqueados</th><th>Memoria usada</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>07:40</td><td>0.12</td><td>0.19</td><td>0</td><td>3.21 %</td></tr>
+                    <tr><td>07:50</td><td>0.07</td><td>0.19</td><td>0</td><td>3.30 %</td></tr>
+                    <tr><td>08:00</td><td>0.24</td><td>0.18</td><td>0</td><td>3.29 %</td></tr>
+                    <tr><td>08:10</td><td>0.24</td><td>0.19</td><td>0</td><td>3.25 %</td></tr>
+                    <tr><td>08:20</td><td>0.15</td><td>0.19</td><td>0</td><td>3.31 %</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-note">La memoria disponible se mantuvo en torno a 56 GB y la carga muy por debajo de la capacidad del equipo.</p>
+    </section>
+
+    <!-- ══════════════════ HISTORIAL ══════════════════ -->
+    <section class="section" id="historial">
+        <p class="section-kicker">04 · HISTORIAL</p>
+        <h2 class="section-title">No es la primera vez</h2>
+        <p class="section-lead">
+            El registro de arranques del servidor muestra tres caídas no planificadas en las
+            últimas dos semanas, todas con el mismo patrón: el registro se corta sin aviso y el
+            servidor vuelve horas después.
+        </p>
+
+        <div class="effort-table-wrap reveal">
+            <table class="effort-table">
+                <thead>
+                    <tr><th>Último registro</th><th>Siguiente arranque</th><th>Sin servicio aprox.</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>23/10/2026 09:20</td><td>23/10/2026 17:55</td><td>8 h 35 min</td></tr>
+                    <tr><td>26/10/2026 23:10</td><td>27/10/2026 09:55</td><td>10 h 45 min</td></tr>
+                    <tr><td>05/11/2026 08:25</td><td>05/11/2026 13:10</td><td>4 h 45 min</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="downtime-bars" id="downtimeBars">
+            <div class="dt-row"><span>23/10</span><div class="dt-track"><div class="dt-fill" data-min="515"></div></div><span>8 h 35 m</span></div>
+            <div class="dt-row"><span>26–27/10</span><div class="dt-track"><div class="dt-fill" data-min="645"></div></div><span>10 h 45 m</span></div>
+            <div class="dt-row"><span>05/11</span><div class="dt-track"><div class="dt-fill" data-min="285"></div></div><span>4 h 45 m</span></div>
+        </div>
+
+        <div class="sim-alert alert-red reveal">
+            <b>Tres caídas en dos semanas, con unas 24 horas sin servicio en total.</b>
+            Los tiempos son estimados a partir del último registro y el siguiente arranque; solo
+            la caída del 5/11 se analizó en detalle.
+        </div>
+    </section>
+
+    <!-- ══════════════════ CAUSA ══════════════════ -->
+    <section class="section" id="causa">
+        <p class="section-kicker">05 · CAUSA PROBABLE</p>
+        <h2 class="section-title">Una causa externa al sistema operativo</h2>
+        <p class="section-lead">
+            El servidor se detuvo de forma instantánea, sin mensajes, con recursos holgados y sin
+            errores previos. Este patrón no corresponde a un fallo del software ni a una saturación,
+            sino a algo que ocurre <b>por debajo del sistema operativo</b>. No es posible confirmar
+            la causa exacta solo con los registros del servidor.
+        </p>
+
+        <div class="cards-3">
+            <article class="card reveal">
+                <div class="card-icon red">▦</div>
+                <h3>Fallo de hardware</h3>
+                <p>Fuente de alimentación, memoria, placa o disco del servidor físico. La
+                <b>recurrencia</b> refuerza esta hipótesis.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon amber">ϟ</div>
+                <h3>Energía o centro de datos</h3>
+                <p>Corte de energía o incidencia en el centro de datos donde está alojado el servidor.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card-icon violet">⚙</div>
+                <h3>Intervención del proveedor</h3>
+                <p>Reinicio o intervención forzada por parte del proveedor de infraestructura.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ RECOMENDACIONES ══════════════════ -->
+    <section class="section" id="recomendaciones">
+        <p class="section-kicker">06 · RECOMENDACIONES</p>
+        <h2 class="section-title">Próximos pasos</h2>
+
+        <div class="scope-list">
+            <article class="scope-card reveal" style="--accent: var(--red)">
+                <div class="scope-card-head">
+                    <div class="card-icon red">1</div>
+                    <h3>Abrir un ticket con el proveedor de infraestructura</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Indicar las <b>tres fechas y horas</b> de caída (23/10, 26/10 y 05/11).</li>
+                    <li>Solicitar el registro de intervenciones, incidencias del centro de datos y un <b>diagnóstico de hardware</b>.</li>
+                </ul>
+            </article>
+            <article class="scope-card reveal" style="--accent: var(--amber)">
+                <div class="scope-card-head">
+                    <div class="card-icon amber">2</div>
+                    <h3>Revisar el panel del proveedor</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Buscar avisos de <b>mantenimiento</b> o incidencias en esas fechas.</li>
+                </ul>
+            </article>
+            <article class="scope-card reveal" style="--accent: var(--cyan)">
+                <div class="scope-card-head">
+                    <div class="card-icon cyan">3</div>
+                    <h3>Configurar monitoreo externo</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Comprobación de disponibilidad <b>cada minuto</b> con aviso por correo o mensaje.</li>
+                    <li>Detectar caídas de inmediato y reducir las horas sin servicio.</li>
+                </ul>
+            </article>
+            <article class="scope-card reveal" style="--accent: var(--green)">
+                <div class="scope-card-head">
+                    <div class="card-icon green">4</div>
+                    <h3>Verificar las copias de seguridad</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Comprobar que existen y que <b>se pueden restaurar</b>: los apagados abruptos ponen en riesgo los datos.</li>
+                </ul>
+            </article>
+            <article class="scope-card reveal" style="--accent: var(--violet)">
+                <div class="scope-card-head">
+                    <div class="card-icon violet">5</div>
+                    <h3>Evaluar la migración del servidor</h3>
+                </div>
+                <ul class="scope-list-items">
+                    <li>Si el proveedor no encuentra la causa, plantear el <b>cambio a otro servidor físico</b>.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- ══════════════════ CIERRE ══════════════════ -->
+    <section class="section closing">
+        <div class="closing-box reveal">
+            <h2>Conclusión</h2>
+            <p>
+                El servidor de ROR sufrió un <b>apagado abrupto</b> el 5 de noviembre, sin errores
+                previos ni sobrecarga, y es la tercera vez en dos semanas. Recomendamos escalar el
+                caso al proveedor de infraestructura y activar monitoreo externo cuanto antes.
+            </p>
+            <p class="closing-sign">Servisofts · Soporte técnico</p>
+            <div class="quote-actions" style="justify-content: center;">
+                <a class="btn btn-ghost" href="doc.pdf" target="_blank" rel="noopener">▤ Descargar informe en PDF</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="brand"><span class="brand-dot"></span> <b>AUDITORÍA · 05/11/2026</b></span>
+            <span>Informe técnico para <a href="https://rorlogistico.com" target="_blank" rel="noopener">rorlogistico.com</a></span>
+            <a href="https://servisofts.com" target="_blank" rel="noopener">servisofts.com</a>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
